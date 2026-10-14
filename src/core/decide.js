@@ -15,7 +15,7 @@ export function estimateHours(components) {
     const count = def.perUnit ? Math.max(1, Math.min(20, Math.round(c.count || 1))) : 1;
     const l = def.hours[0] * count, h = def.hours[1] * count;
     low += l; high += h;
-    lines.push({ type: c.type, label: def.label, count, low: l, high: h, quote: c.quote, outOfStack: !!def.outOfStack });
+    lines.push({ type: c.type, label: def.label, count, low: l, high: h, quote: c.quote, outOfStack: !!def.outOfStack, source: c.source || 'model' });
   }
   return { low, high, mid: (low + high) / 2, lines };
 }

@@ -232,8 +232,8 @@ function render() {
     : `<h3>Thrown out by the checker</h3><p class="fine" style="margin:0">Nothing. Every quote Gemma gave is in the post.</p>`;
 
   // estimate
-  $('estimate').innerHTML = `<h3>Work Gemma found, hours from my rate card</h3><table class="est"><tbody>` +
-    d.est.lines.map((l) => { if (l.quote) quotes.push(l.quote); return `<tr class="${l.outOfStack ? 'oos' : ''}"><td>${esc(l.label)}${l.count > 1 ? ' x' + l.count : ''}${l.outOfStack ? ' (not my stack)' : ''}</td><td class="h">${l.low}-${l.high} h</td></tr>`; }).join('') +
+  $('estimate').innerHTML = `<h3>Work found in the post, hours from my rate card</h3><table class="est"><tbody>` +
+    d.est.lines.map((l) => { if (l.quote) quotes.push(l.quote); return `<tr class="${l.outOfStack ? 'oos' : ''}"><td>${esc(l.label)}${l.count > 1 ? ' x' + l.count : ''}${l.outOfStack ? ' (not my stack)' : ''}${l.source === 'rule' ? '<span class="src">text rule</span>' : ''}</td><td class="h">${l.low}-${l.high} h</td></tr>`; }).join('') +
     `</tbody></table>`;
 
   // draft
