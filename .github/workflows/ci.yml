@@ -1,0 +1,16 @@
+name: checks
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      # Unit tests for the verifier, money parser, rules and decision.
+      - run: npm test
+      # Re-score the saved Gemma runs. Fails if the published numbers drift from the code.
+      - run: node scripts/check-scores.mjs
+      - run: npm run build

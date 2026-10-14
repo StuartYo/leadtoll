@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LeadToll: should you pay for this lead?</title>
+  <meta name="description" content="Paste a freelance job post. Gemma 4 reads it in your browser, plain code checks every claim and works out whether the lead fee is worth paying." />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="brand" href="/" aria-label="LeadToll home">
+        <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="8" fill="var(--ink)"/><path d="M9 21h14M11 21V11M21 21v-6" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/></svg>
+        <span>LeadToll</span>
+      </a>
+      <nav class="toplinks">
+        <a href="#how">How it decides</a>
+        <a href="https://github.com/StuartYo/leadtoll" target="_blank" rel="noopener">Code</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>Should you pay for this lead?</h1>
+      <p class="lede">Upwork, Thumbtack, Bark and PRO360 charge you before you even talk to the client. Paste the job post. <strong>Gemma 4 reads it on your own GPU</strong>, plain code checks every quote it gives back, and the math decides.</p>
+    </section>
+
+    <section class="modebar" aria-label="Mode">
+      <div class="seg" role="tablist">
+        <button role="tab" id="tab-recorded" aria-selected="true" class="on">Recorded runs</button>
+        <button role="tab" id="tab-live" aria-selected="false">Run Gemma 4 here</button>
+      </div>
+      <div id="status" class="status" aria-live="polite"></div>
+    </section>
+
+    <div class="grid">
+      <section class="card lead" aria-label="The lead">
+        <div class="card-h">
+          <h2>The lead</h2>
+          <span id="tag" class="tag"></span>
+        </div>
+        <div id="examples" class="examples" aria-label="Examples"></div>
+        <div id="postView" class="postview" tabindex="0" aria-label="Job post with highlighted quotes"></div>
+        <textarea id="post" class="post" rows="9" spellcheck="false" placeholder="Paste a job post here (English or Chinese)"></textarea>
+        <div class="row">
+          <label>Lead fee
+            <span class="money"><input id="fee" type="number" min="0" step="0.1" inputmode="decimal" /><select id="feeCur"><option>USD</option><option>TWD</option></select></span>
+          </label>
+          <button id="edit" class="btn ghost hidden" type="button">Edit post</button>
+          <button id="run" class="btn primary" type="button">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 4l14 8-14 8z" fill="currentColor"/></svg>
+            <span>Check this lead</span>
+          </button>
+        </div>
+        <details class="you">
+          <summary>Your numbers</summary>
+          <div class="you-grid">
+            <label>Floor rate / hour <input id="floor" type="number" min="1" step="1" /></label>
+            <label>Minimum project <input id="minp" type="number" min="0" step="10" /></label>
+            <label>Your win rate % <input id="win" type="number" min="1" max="100" step="1" /></label>
+            <label>Hours per proposal <input id="ph" type="number" min="0" step="0.25" /></label>
+          </div>
+          <p class="fine">In USD. Change them and the verdict updates at once, without running the model again.</p>
+        </details>
+      </section>
+
+      <section class="card result" aria-label="Verdict" aria-live="polite">
+        <div id="verdict" class="verdict"></div>
+        <div id="meter" class="meter"></div>
+        <dl id="nums" class="nums"></dl>
+        <div id="reasons" class="block"></div>
+        <div id="dropped" class="block"></div>
+        <div id="estimate" class="block"></div>
+        <div id="draft" class="block"></div>
+      </section>
+    </div>
+
+    <section id="how" class="how">
+      <h2>How it decides</h2>
+      <ol>
+        <li><strong>Gemma 4 E2B reads.</strong> It copies the budget, the pieces of work and any warning signs out of the post, each with an exact quote. It is not asked for an opinion.</li>
+        <li><strong>Code checks.</strong> A quote that is not in the post is thrown out, along with the claim it was supposed to support. Amounts are read from the quote by code, not taken from the model.</li>
+        <li><strong>Code decides.</strong> Hard no's (on site, account farming, paid only on success, unpaid tests) end it. Otherwise the cost of bidding (lead fee plus your unpaid proposal time) is divided by what the job pays above your floor. That is the share of these leads you must win to break even. If your real win rate is higher, pay.</li>
+      </ol>
+      <p class="fine">Nothing leaves your browser. The model is about 2 GB, downloads once from Hugging Face, and then works offline. Recorded runs are real outputs from the same model, saved so you can see the tool without the download. Examples are made up or rewritten from my own notes; each one says which.</p>
+    </section>
+  </main>
+
+  <footer class="foot wrap">
+    <span>Built for the DEV Hacktoberfest Open-Source AI Challenge, week 2. MIT licensed.</span>
+  </footer>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

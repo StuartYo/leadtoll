@@ -1,0 +1,25 @@
+{
+  "name": "leadtoll",
+  "version": "1.0.0",
+  "description": "Decide whether a freelance lead is worth paying for. Gemma 4 runs in your browser; code checks every claim.",
+  "scripts": {
+    "dev": "vite --port 5181",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "score": "node scripts/score.mjs"
+  },
+  "keywords": [],
+  "author": "Hua-I Yu",
+  "license": "MIT",
+  "type": "module",
+  "devDependencies": {
+    "playwright": "^1.62.1",
+    "vite": "^7.3.7",
+    "vitest": "^3.2.7"
+  },
+  "dependencies": {
+    "@mlc-ai/web-llm": "^0.2.86"
+  },
+  "private": true
+}
