@@ -268,7 +268,9 @@ function renderPost(quotes) {
   }
   spans.sort((a, b) => a[0] - b[0]);
   let html = '', i = 0;
-  const P = post.normalize('NFKC');
+  // Spans are found on the NFKC form; show the original text (full-width punctuation) when lengths line up.
+  const N = post.normalize('NFKC');
+  const P = N.length === post.length ? post : N;
   for (const [s, e, q] of spans) {
     html += esc(P.slice(i, s)) + `<mark data-q="${esc(q)}" class="${q === state.activeQuote ? 'on' : ''}">${esc(P.slice(s, e))}</mark>`;
     i = e;
