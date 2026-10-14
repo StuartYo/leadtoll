@@ -1,1 +1,146 @@
-{"model":"","recordedOn":"","examples":[]}
+{
+ "model": "gemma-4-E2B-it-q4f16_1-MLC",
+ "recordedOn": "2026-10-14",
+ "examples": [
+  {
+   "id": "hist-01",
+   "title": "Points platform, Taichung (the NT$945 one)",
+   "platform": "pro360",
+   "label": "rewritten from my notes",
+   "post": "台中潭子，想做一個點數回饋平台。會員註冊登入、消費累積點數、點數兌換，還要一個後台給店家看報表。希望手機也能用。預算 10–15 萬，希望一個多月內上線。",
+   "lead_cost": {
+    "amount": 945,
+    "currency": "TWD"
+   },
+   "extract": "{\n  \"budget\": {\"quote\": \"預算 10–15 萬\", \"per\": \"project\"},\n  \"components\": [\n    {\"type\": \"login\", \"count\": 1, \"quote\": \"會員註冊登入\"},\n    {\"type\": \"points\", \"count\": 1, \"quote\": \"消費累積點數\"},\n    {\"type\": \"page\", \"count\": 1, \"quote\": \"點數兌換\"},\n    {\"type\": \"admin_dashboard\", \"count\": 1, \"quote\": \"後台給店家看報表\"}\n  ],\n  \"flags\": [\n    {\"type\": \"rush\", \"quote\": \"希望一個多月內上線\"}\n  ]\n}",
+   "draft": "您好，我看到您在寻找一个点数回馈平台。 我非常理解您希望建立一个包含会员注册登录、消费积分累积和积分兑换的功能。 此外，您也需要一个供店家查看报表的后台系统，并且希望支持手机端使用。 我有信心能为您实现这个目标。 我提供的服务费用是 {{PRICE}}，预计完成时间为 {{DAYS}}。",
+   "recordedVerdict": "PAY"
+  },
+  {
+   "id": "syn-14",
+   "title": "\"Airbnb for pet sitters\", $8,000",
+   "platform": "upwork",
+   "label": "made-up post",
+   "post": "Looking for dev to build an Airbnb for pet sitters (like Airbnb but for dog owners and sitters). Features: search by location, sitter profiles with photos, booking calendar, payments through Stripe, reviews both ways, messaging, and a mobile responsive design. I have a business plan and logo ready. Budget $8,000. Looking for long term partner who can keep improving it after launch.",
+   "lead_cost": {
+    "amount": 3.6,
+    "currency": "USD"
+   },
+   "extract": "{\n  \"budget\": {\"quote\": \"$8,000\", \"per\": \"project\"},\n  \"components\": [\n    {\"type\": \"shopify_theme\", \"count\": 1, \"quote\": \"I have a business plan and logo ready\"}\n  ],\n  \"flags\": [\n    {\"type\": \"unlimited_revisions\", \"quote\": \"Looking for long term partner who can keep improving it after launch\"}\n  ]\n}",
+   "draft": "Hello. I read about your project to build an Airbnb specifically for dog owners and sitters. I find the idea of connecting pet owners and sitters very interesting. Before I put together a proposal, I need to understand a couple of things. Could you share more about your budget for this project. Also, what is the expected scope of work you envision for the initial build.",
+   "recordedVerdict": "CLOSE"
+  },
+  {
+   "id": "syn-06",
+   "title": "Tutor marketplace, paid after the seed round",
+   "platform": "upwork",
+   "label": "made-up post",
+   "post": "Hey! Our startup is building a marketplace app for local tutors. We're pre-seed with a small passionate team. Looking for a full-stack dev to build the MVP: login, tutor profiles, booking calendar, in-app chat and a simple admin. We really believe in rewarding good people, so we'll compensate generously once we close our seed round (expected next quarter). You'd get to be part of something big from day one. Please send your portfolio and availability.",
+   "lead_cost": {
+    "amount": 1.8,
+    "currency": "USD"
+   },
+   "extract": "{\n  \"budget\": {\"quote\": \"compensate generously once we close our seed round (expected next quarter)\", \"per\": \"project\"},\n  \"components\": [\n    {\"type\": \"login\", \"count\": 1, \"quote\": \"login\"}\n  ],\n  \"flags\": [\n    {\"type\": \"pay_on_success\", \"quote\": \"compensate generously once we close our seed round (expected next quarter)\"}\n  ]\n}",
+   "draft": "",
+   "recordedVerdict": "SKIP"
+  },
+  {
+   "id": "syn-19",
+   "title": "Leave system, Monday stand-ups at the office",
+   "platform": "pro360",
+   "label": "made-up post",
+   "post": "公司在台中西屯，需要一位工程師協助開發內部的請假與排班系統（網頁版），員工大約 80 人，要有主管簽核、月報表匯出。預算 6-8 萬，預計三個月。合作方式：前兩個月每週一早上 9 點要到我們辦公室參加站立會議，其他時間可以遠端處理。",
+   "lead_cost": {
+    "amount": 150,
+    "currency": "TWD"
+   },
+   "extract": "{\n  \"budget\": {\"quote\": \"6-8 萬\", \"per\": \"project\"},\n  \"components\": [\n    {\"type\": \"page\", \"count\": 1, \"quote\": \"開發內部的請假與排班系統（網頁版）\"}\n  ],\n  \"flags\": [\n    {\"type\": \"onsite\", \"quote\": \"前兩個月每週一早上 9 點要到我們辦公室參加站立會議\"}\n  ]\n}",
+   "draft": "",
+   "recordedVerdict": "SKIP"
+  },
+  {
+   "id": "syn-05",
+   "title": "Dashboard for 40 Instagram accounts",
+   "platform": "bark",
+   "label": "made-up post",
+   "post": "We help small brands grow their presence on social. Looking for a dev to build us a dashboard to manage 40 Instagram accounts from one phone setup without getting flagged. Needs scheduling, auto follow/like/comment, and rotating device fingerprints so the accounts look like different people. Fixed budget $1,500, ongoing work if it goes well.",
+   "lead_cost": {
+    "amount": 18,
+    "currency": "USD"
+   },
+   "extract": "{\n  \"budget\": {\"quote\": \"$1,500\", \"per\": \"project\"},\n  \"components\": [\n    {\"type\": \"admin_dashboard\", \"count\": 1, \"quote\": \"build us a dashboard to manage 40 Instagram accounts from one phone setup\"}\n  ],\n  \"flags\": [\n    {\"type\": \"tos_grey\", \"quote\": \"without getting flagged\"}\n  ]\n}",
+   "draft": "",
+   "recordedVerdict": "SKIP"
+  },
+  {
+   "id": "syn-08",
+   "title": "5-page site for an accounting practice",
+   "platform": "upwork",
+   "label": "made-up post",
+   "post": "We need a 5-page marketing website for our accounting practice (Home, Services, About, Team, Contact) with a simple CMS so we can post blog articles ourselves. Design is provided in Figma and all copy and photos will be ready at the start. Fixed price: $1,800. We'd like it delivered within 4 weeks. Please include a link to one similar site you've built in your proposal.",
+   "lead_cost": {
+    "amount": 1.5,
+    "currency": "USD"
+   },
+   "extract": "{\n  \"budget\": {\"quote\": \"$1,800\", \"per\": \"project\"},\n  \"components\": [\n    {\"type\": \"page\", \"count\": 5, \"quote\": \"We need a 5-page marketing website for our accounting practice (Home, Services, About, Team, Contact)\"}\n  ],\n  \"flags\": [\n    {\"type\": \"rush\", \"quote\": \"We'd like it delivered within 4 weeks.\"}\n  ]\n}",
+   "draft": "Hello. I have read your request for a five-page marketing website for your accounting practice. I understand you need a site with sections for Home, Services, About, Team, and Contact, along with a simple CMS for blog posts. The design is provided in Figma, and the copy and photos will be ready for me. I can complete this project for {{PRICE}} and within {{DAYS}}. I have included a link to a similar site I have built in a previous project.",
+   "recordedVerdict": "PAY"
+  },
+  {
+   "id": "syn-02",
+   "title": "Finish a React dashboard, $15-20/hr",
+   "platform": "upwork",
+   "label": "made-up post",
+   "post": "Need a dev to finish a React dashboard that my previous guy left half done. Charts are there, login is there, but filters and the export to excel are broken and a few pages are missing. Backend is Node, already deployed. Budget: $15-20/hr, about 40 hours total i think. Please tell me your experience with recharts. Start asap.",
+   "lead_cost": {
+    "amount": 1.2,
+    "currency": "USD"
+   },
+   "extract": "{\n  \"budget\": {\"quote\": \"$15-20/hr\", \"per\": \"hour\"},\n  \"components\": [\n    {\"type\": \"admin_dashboard\", \"count\": 1, \"quote\": \"finish a React dashboard\"},\n    {\"type\": \"login\", \"count\": 1, \"quote\": \"filters and the export to excel are broken\"}\n  ],\n  \"flags\": [\n    {\"type\": \"rush\", \"quote\": \"Start asap\"}\n  ]\n}",
+   "draft": "",
+   "recordedVerdict": "SKIP"
+  },
+  {
+   "id": "syn-12",
+   "title": "Consulting site, budget $500-5000",
+   "platform": "upwork",
+   "label": "made-up post",
+   "post": "need website for my consulting biz. budget $500-5000 depends on what the proposals look like. pages: home, about, services, contact. maybe a blog. maybe booking later but not sure yet. pls send examples of ur work and how long it would take. not in a hurry",
+   "lead_cost": {
+    "amount": 2.4,
+    "currency": "USD"
+   },
+   "extract": "{\n  \"budget\": {\"quote\": \"$500-5000\", \"per\": \"project\"},\n  \"components\": [\n    {\"type\": \"page\", \"count\": 4, \"quote\": \"home, about, services, contact\"}\n  ],\n  \"flags\": [\n    {\"type\": \"rush\", \"quote\": \"not in a hurry\"}\n  ]\n}",
+   "draft": "Hello. I read about your need for a website for your consulting business. I understand you are looking for pages like home, about, services, and contact, with a potential blog and booking feature later on. I would like to learn a bit more about your vision for the site. Could you please share more details about your budget for this project. Also, understanding the exact scope you envision will help me provide an accurate proposal.",
+   "recordedVerdict": "CLOSE"
+  },
+  {
+   "id": "syn-22",
+   "title": "Online course site, budget negotiable",
+   "platform": "pro360",
+   "label": "made-up post",
+   "post": "想做一個會員制的線上課程網站，學員可以註冊、購買課程、觀看影片。預算可以談，先看大家的報價跟作品再決定。時間不急，歡迎提供建議。",
+   "lead_cost": {
+    "amount": 150,
+    "currency": "TWD"
+   },
+   "extract": "{\n  \"budget\": {\"quote\": \"預算可以談\", \"per\": \"project\"},\n  \"components\": [\n    {\"type\": \"shopify_theme\", \"count\": 1, \"quote\": \"想做一個會員制的線上課程網站\"}\n  ],\n  \"flags\": []\n}",
+   "draft": "您好，我很高兴看到您正在寻找一个会员制的线上课程网站。 我仔细阅读了您的需求，特别是关于学员可以注册、购买课程并观看影片的功能。 在我提供报价之前，我想先了解一下您的预算范围。 另外，关于您期望的具体功能范围，也请您详细说明一下。 期待能有机会与您进一步沟通。",
+   "recordedVerdict": "CLOSE"
+  },
+  {
+   "id": "hist-09",
+   "title": "Phone farm for social accounts",
+   "platform": "tasker",
+   "label": "rewritten from my notes",
+   "post": "行銷公司，需要建置手機群控系統，一台電腦同時操作多支手機，管理大量社群帳號自動發文、按讚，要能避開平台風控偵測。",
+   "lead_cost": {
+    "amount": 0,
+    "currency": "TWD"
+   },
+   "extract": "{\n  \"budget\": null,\n  \"components\": [\n    {\"type\": \"ai_feature\", \"count\": 1, \"quote\": \"要能避開平台風控偵測\"}\n  ],\n  \"flags\": [\n    {\"type\": \"tos_grey\", \"quote\": \"要能避開平台風控偵測\"}\n  ]\n}",
+   "draft": "",
+   "recordedVerdict": "SKIP"
+  }
+ ]
+}

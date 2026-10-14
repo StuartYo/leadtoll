@@ -1,8 +1,9 @@
-import { quoteInPost } from './verify.js';
+import { quoteInPost, locate } from './verify.js';
 import { parseMoney } from './money.js';
 import { ruleFlags, ruleNoGo, LABEL_WORDS, NEGATED_ONSITE } from './rules.js';
 import { COMPONENTS, FLAGS } from './catalog.js';
 import { decide } from './decide.js';
+import { toTW, hasCJK } from './zh.js';
 
 /** Pull the first JSON object out of a model reply (it sometimes wraps it in fences). */
 export function parseJSON(text) {
@@ -45,6 +46,16 @@ export function verifyExtraction(raw, post, { useRules = true, useModel = true }
   const m = useModel && raw && typeof raw === 'object' ? raw : {};
 
   const check = (kind, item) => {
+    // A quote copied into Simplified Chinese from a Traditional post is converted back before checking.
+    if (item && typeof item.quote === 'string' && hasCJK(item.quote) && !quoteInPost(item.quote, post)) {
+      const P = String(post).normalize('NFKC');
+      const TP = toTW(P);
+      const at = TP.length === P.length ? locate(toTW(item.quote), TP) : null;
+      if (at) {
+        item.quote = P.slice(at[0], at[1]);
+        item.converted = true;
+      }
+    }
     const ok = item && typeof item.quote === 'string' && quoteInPost(item.quote, post);
     (ok ? kept : dropped).push({ kind, ...item, ...(ok ? {} : { why: item && typeof item.quote === 'string' ? 'quote is not in the post' : 'no quote given' }) });
     return ok;

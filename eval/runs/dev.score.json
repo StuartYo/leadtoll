@@ -33,10 +33,10 @@
   },
   "reader": {
    "claims": 93,
-   "dropped_by_verifier": "9/93 (10%)",
+   "dropped_by_verifier": "18/93 (19%)",
    "dropped_why": {
-    "no amount that code can read": 6,
-    "quote is real but does not say that": 3
+    "quote is real but does not say that": 12,
+    "no amount that code can read": 6
    },
    "json_parse_fail": 0,
    "median_extract_ms": 12213
@@ -85,10 +85,10 @@
    "baseline": "PAY",
    "rules_only": "PAY",
    "leadtoll": "PAY",
-   "dropped": [],
-   "flags": [
-    "rush(model)"
+   "dropped": [
+    "flag:rush:Hoping for launch before our anniversary in 7 week"
    ],
+   "flags": [],
    "budget": "2500-3000 USD"
   },
   {
@@ -137,10 +137,10 @@
    "baseline": "PAY",
    "rules_only": "PAY",
    "leadtoll": "PAY",
-   "dropped": [],
-   "flags": [
-    "rush(model)"
+   "dropped": [
+    "flag:rush:We'd like it delivered within 4 weeks."
    ],
+   "flags": [],
    "budget": "1800-1800 USD"
   },
   {
@@ -179,10 +179,10 @@
    "baseline": "PAY",
    "rules_only": "CLOSE",
    "leadtoll": "CLOSE",
-   "dropped": [],
-   "flags": [
-    "rush(model)"
+   "dropped": [
+    "flag:rush:not in a hurry"
    ],
+   "flags": [],
    "budget": "500-5000 USD"
   },
   {
@@ -191,10 +191,10 @@
    "baseline": "SKIP",
    "rules_only": "CLOSE",
    "leadtoll": "CLOSE",
-   "dropped": [],
-   "flags": [
-    "rush(model)"
+   "dropped": [
+    "flag:rush:Would like it in 2 weeks"
    ],
+   "flags": [],
    "budget": "700-700 USD"
   },
   {
@@ -233,11 +233,10 @@
    "rules_only": "CLOSE",
    "leadtoll": "CLOSE",
    "dropped": [
-    "budget::reply with your hourly rate"
+    "budget::reply with your hourly rate",
+    "flag:rush:Fast delivery preferred"
    ],
-   "flags": [
-    "rush(model)"
-   ],
+   "flags": [],
    "budget": null
   },
   {
@@ -246,10 +245,10 @@
    "baseline": "PAY",
    "rules_only": "PAY",
    "leadtoll": "PAY",
-   "dropped": [],
-   "flags": [
-    "rush(model)"
+   "dropped": [
+    "flag:rush:希望 2 個月內完成"
    ],
+   "flags": [],
    "budget": "30000-50000 TWD"
   },
   {
@@ -258,10 +257,10 @@
    "baseline": "PAY",
    "rules_only": "PAY",
    "leadtoll": "SKIP",
-   "dropped": [],
-   "flags": [
-    "rush(model)"
+   "dropped": [
+    "flag:rush:希望一個月內上線"
    ],
+   "flags": [],
    "budget": "20000-20000 TWD"
   },
   {
@@ -317,10 +316,10 @@
    "baseline": "PAY",
    "rules_only": "PAY",
    "leadtoll": "PAY",
-   "dropped": [],
-   "flags": [
-    "rush(model)"
+   "dropped": [
+    "flag:rush:希望一個多月內上線"
    ],
+   "flags": [],
    "budget": "100000-150000 TWD"
   },
   {
@@ -417,10 +416,10 @@
    "baseline": "PAY",
    "rules_only": "PAY",
    "leadtoll": "PAY",
-   "dropped": [],
-   "flags": [
-    "rush(model)"
+   "dropped": [
+    "flag:rush:9 月底前要上線"
    ],
+   "flags": [],
    "budget": "500000-1000000 TWD"
   }
  ]

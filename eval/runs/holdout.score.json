@@ -33,9 +33,9 @@
   },
   "reader": {
    "claims": 46,
-   "dropped_by_verifier": "4/46 (9%)",
+   "dropped_by_verifier": "11/46 (24%)",
    "dropped_why": {
-    "quote is real but does not say that": 1,
+    "quote is real but does not say that": 8,
     "no amount that code can read": 2,
     "quote is not in the post": 1
    },
@@ -50,10 +50,10 @@
    "baseline": "PAY",
    "rules_only": "PAY",
    "leadtoll": "PAY",
-   "dropped": [],
-   "flags": [
-    "rush(model)"
+   "dropped": [
+    "flag:rush:3 month trial and then go quarterly if it works ou"
    ],
+   "flags": [],
    "budget": "900-900 USD"
   },
   {
@@ -62,10 +62,10 @@
    "baseline": "PAY",
    "rules_only": "PAY",
    "leadtoll": "PAY",
-   "dropped": [],
-   "flags": [
-    "rush(model)"
+   "dropped": [
+    "flag:rush:live in six to eight weeks"
    ],
+   "flags": [],
    "budget": "2000-2000 USD"
   },
   {
@@ -134,10 +134,10 @@
    "baseline": "PAY",
    "rules_only": "CLOSE",
    "leadtoll": "SKIP",
-   "dropped": [],
-   "flags": [
-    "rush(model)"
+   "dropped": [
+    "flag:rush:we would like to launch before the end of next qua"
    ],
+   "flags": [],
    "budget": "500-700 USD"
   },
   {
@@ -146,10 +146,10 @@
    "baseline": "PAY",
    "rules_only": "SKIP",
    "leadtoll": "SKIP",
-   "dropped": [],
-   "flags": [
-    "rush(model)"
+   "dropped": [
+    "flag:rush:about two weeks"
    ],
+   "flags": [],
    "budget": "1500-1500 USD"
   },
   {
@@ -158,10 +158,10 @@
    "baseline": "PAY",
    "rules_only": "PAY",
    "leadtoll": "PAY",
-   "dropped": [],
-   "flags": [
-    "rush(model)"
+   "dropped": [
+    "flag:rush:希望一個半月內可以上線"
    ],
+   "flags": [],
    "budget": "35000-45000 TWD"
   },
   {
@@ -171,11 +171,10 @@
    "rules_only": "PAY",
    "leadtoll": "SKIP",
    "dropped": [
-    "budget::2.5 萬，先做一間，做得好再給其他間。</div>"
+    "budget::2.5 萬，先做一間，做得好再給其他間。</div>",
+    "flag:rush:時間大概一週內"
    ],
-   "flags": [
-    "rush(model)"
-   ],
+   "flags": [],
    "budget": "25000-25000 TWD"
   },
   {
@@ -185,11 +184,11 @@
    "rules_only": "CLOSE",
    "leadtoll": "SKIP",
    "dropped": [
-    "budget::預算還沒抓，想先聽聽報價範圍再決定"
+    "budget::預算還沒抓，想先聽聽報價範圍再決定",
+    "flag:rush:想知道大概要做多久"
    ],
    "flags": [
-    "vague_scope(model)",
-    "rush(model)"
+    "vague_scope(model)"
    ],
    "budget": null
   }

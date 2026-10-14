@@ -90,3 +90,14 @@ describe('sentences', () => {
     expect(sentences('我們預算 2.5 萬，先做一間。時間一週。')).toEqual(['我們預算 2.5 萬,先做一間。', '時間一週。']);
   });
 });
+
+describe('simplified quotes', () => {
+  it('converts a Simplified copy of a Traditional quote back and keeps the flag', () => {
+    const post = '高雄民宿官網加線上訂房。預算 7 萬。需要工程師每週到民宿現場測試跟安裝設備，大概要去 4 次。';
+    const raw = { budget: null, components: [], flags: [{ type: 'onsite', quote: '需要工程师每周到民宿现场测试跟安装设备' }] };
+    const r = triage(raw, post, { amount: 200, currency: 'TWD' }, P);
+    expect(r.facts.flags.map((f) => f.type)).toContain('onsite');
+    expect(r.facts.flags[0].quote).toBe('需要工程師每週到民宿現場測試跟安裝設備');
+    expect(r.decision.verdict).toBe('SKIP');
+  });
+});

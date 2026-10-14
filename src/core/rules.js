@@ -54,6 +54,7 @@ export const LABEL_WORDS = {
   tos_grey: /account|farm|review|ban|detect|flag|bot|follower|captcha|帳號|風控|群控|評論|偵測|養號/i,
   pay_on_success: /after|once|when|equity|share|launch|fund|seed|round|revenue|profit|上線|分潤|賺|募資/i,
   unpaid_work: /unpaid|free|trial|sample|test|not paid|paid if|免費|試做|試用/i,
+  rush: /urgent|asap|rush|immediately|tomorrow|tonight|this week|next week|by (monday|tuesday|wednesday|thursday|friday)|b\d+\s*days?b|急|盡快|馬上|明天|今天|這週|下週|本週|\d+\s*天內/i,
   native_app: /\bios\b|android|app store|play store|native|mobile app|手機\s*app|上架|原生/i,
   game: /game|遊戲|手遊/i,
   shopify_theme: /shopify|liquid|佈景/i,

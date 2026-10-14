@@ -1,0 +1,241 @@
+{
+ "summary": {
+  "run": "eval/runs/holdout2.json",
+  "model": "gemma-4-E2B-it-q4f16_1-MLC",
+  "n": 16,
+  "arms": {
+   "baseline": {
+    "verdict_accuracy": "11/16 (69%)",
+    "hard_no_caught": "4/5",
+    "paid_on_hard_no": 1,
+    "budget_read_correctly": "6/16",
+    "quotes_not_in_post": "4/21 (19%)",
+    "json_parse_fail": 0
+   },
+   "rules_only": {
+    "verdict_accuracy": "10/16 (63%)",
+    "hard_no_caught": "1/5",
+    "paid_on_hard_no": 4,
+    "budget_read_correctly": "16/16"
+   },
+   "model_unverified": {
+    "verdict_accuracy": "12/16 (75%)",
+    "hard_no_caught": "4/5",
+    "paid_on_hard_no": 0,
+    "budget_read_correctly": "16/16"
+   },
+   "leadtoll": {
+    "verdict_accuracy": "15/16 (94%)",
+    "hard_no_caught": "4/5",
+    "paid_on_hard_no": 0,
+    "budget_read_correctly": "16/16"
+   }
+  },
+  "reader": {
+   "claims": 54,
+   "dropped_by_verifier": "13/54 (24%)",
+   "dropped_why": {
+    "quote is real but does not say that": 11,
+    "no amount that code can read": 2
+   },
+   "json_parse_fail": 0,
+   "median_extract_ms": 13650
+  }
+ },
+ "rows": [
+  {
+   "id": "h2-01",
+   "gold": "PAY",
+   "baseline": "PAY",
+   "rules_only": "PAY",
+   "leadtoll": "PAY",
+   "dropped": [
+    "flag:rush:Would like it live in about 6 weeks"
+   ],
+   "flags": [],
+   "budget": "2500-3500 USD"
+  },
+  {
+   "id": "h2-02",
+   "gold": "SKIP",
+   "baseline": "SKIP",
+   "rules_only": "PAY",
+   "leadtoll": "SKIP",
+   "dropped": [],
+   "flags": [
+    "onsite(model)"
+   ],
+   "budget": "1800-1800 USD"
+  },
+  {
+   "id": "h2-03",
+   "gold": "SKIP",
+   "baseline": "PAY",
+   "rules_only": "PAY",
+   "leadtoll": "SKIP",
+   "dropped": [
+    "flag:rush:long term"
+   ],
+   "flags": [],
+   "budget": "400-600 USD"
+  },
+  {
+   "id": "h2-04",
+   "gold": "PAY",
+   "baseline": "PAY",
+   "rules_only": "PAY",
+   "leadtoll": "PAY",
+   "dropped": [
+    "component:native_app:Posts an alert to a Telegram group when a SKU drop"
+   ],
+   "flags": [
+    "off_platform(rule)"
+   ],
+   "budget": "30-45 USD"
+  },
+  {
+   "id": "h2-05",
+   "gold": "CLOSE",
+   "baseline": "CLOSE",
+   "rules_only": "CLOSE",
+   "leadtoll": "CLOSE",
+   "dropped": [
+    "budget::Budget is flexible, depends on what you propose."
+   ],
+   "flags": [],
+   "budget": null
+  },
+  {
+   "id": "h2-06",
+   "gold": "CLOSE",
+   "baseline": "PAY",
+   "rules_only": "PAY",
+   "leadtoll": "CLOSE",
+   "dropped": [
+    "flag:rush:Would like it done in 2 weeks"
+   ],
+   "flags": [],
+   "budget": "600-800 USD"
+  },
+  {
+   "id": "h2-07",
+   "gold": "SKIP",
+   "baseline": "PAY",
+   "rules_only": "PAY",
+   "leadtoll": "SKIP",
+   "dropped": [
+    "flag:rush:this should go quick"
+   ],
+   "flags": [
+    "pay_on_success(model)"
+   ],
+   "budget": "6000-6000 USD"
+  },
+  {
+   "id": "h2-08",
+   "gold": "SKIP",
+   "baseline": "SKIP",
+   "rules_only": "PAY",
+   "leadtoll": "CLOSE",
+   "dropped": [
+    "flag:rush:logs into each dealer portal every night"
+   ],
+   "flags": [],
+   "budget": "1200-1200 USD"
+  },
+  {
+   "id": "h2-09",
+   "gold": "SKIP",
+   "baseline": "SKIP",
+   "rules_only": "SKIP",
+   "leadtoll": "SKIP",
+   "dropped": [],
+   "flags": [
+    "unpaid_work(model)"
+   ],
+   "budget": "4500-4500 USD"
+  },
+  {
+   "id": "h2-10",
+   "gold": "PAY",
+   "baseline": "PAY",
+   "rules_only": "PAY",
+   "leadtoll": "PAY",
+   "dropped": [],
+   "flags": [],
+   "budget": "2800-3200 USD"
+  },
+  {
+   "id": "h2-11",
+   "gold": "CLOSE",
+   "baseline": "PAY",
+   "rules_only": "CLOSE",
+   "leadtoll": "CLOSE",
+   "dropped": [],
+   "flags": [],
+   "budget": null
+  },
+  {
+   "id": "h2-12",
+   "gold": "PAY",
+   "baseline": "PAY",
+   "rules_only": "PAY",
+   "leadtoll": "PAY",
+   "dropped": [
+    "flag:rush:希望兩個月內上線"
+   ],
+   "flags": [],
+   "budget": "80000-120000 TWD"
+  },
+  {
+   "id": "h2-13",
+   "gold": "PAY",
+   "baseline": "PAY",
+   "rules_only": "PAY",
+   "leadtoll": "PAY",
+   "dropped": [
+    "flag:rush:之前找過兩家都說做不完，這次希望找認真的人"
+   ],
+   "flags": [],
+   "budget": "30000-40000 TWD"
+  },
+  {
+   "id": "h2-14",
+   "gold": "PAY",
+   "baseline": "PAY",
+   "rules_only": "PAY",
+   "leadtoll": "PAY",
+   "dropped": [
+    "component:erp_suite:人資可匯出月報表（Excel）",
+    "flag:rush:工期 6 週"
+   ],
+   "flags": [],
+   "budget": "45000-60000 TWD"
+  },
+  {
+   "id": "h2-15",
+   "gold": "CLOSE",
+   "baseline": "PAY",
+   "rules_only": "CLOSE",
+   "leadtoll": "CLOSE",
+   "dropped": [
+    "budget::預算面議，看你們怎麼報價。",
+    "component:shopify_theme:想做一個社區版的蝦皮"
+   ],
+   "flags": [],
+   "budget": null
+  },
+  {
+   "id": "h2-16",
+   "gold": "SKIP",
+   "baseline": "SKIP",
+   "rules_only": "PAY",
+   "leadtoll": "SKIP",
+   "dropped": [],
+   "flags": [
+    "onsite(model)"
+   ],
+   "budget": "70000-70000 TWD"
+  }
+ ]
+}

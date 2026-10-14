@@ -19,7 +19,8 @@
     "vitest": "^3.2.7"
   },
   "dependencies": {
-    "@mlc-ai/web-llm": "^0.2.86"
+    "@mlc-ai/web-llm": "^0.2.86",
+    "opencc-js": "^1.4.2"
   },
   "private": true
 }

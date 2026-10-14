@@ -1,0 +1,76 @@
+{
+ "model": "gemma-4-E2B-it-q4f16_1-MLC",
+ "at": "2026-10-14T17:06:57.441Z",
+ "results": [
+  {
+   "id": "hist-01",
+   "extract": "{\n  \"budget\": {\"quote\": \"預算 10–15 萬\", \"per\": \"project\"},\n  \"components\": [\n    {\"type\": \"login\", \"count\": 1, \"quote\": \"會員註冊登入\"},\n    {\"type\": \"points\", \"count\": 1, \"quote\": \"消費累積點數\"},\n    {\"type\": \"page\", \"count\": 1, \"quote\": \"點數兌換\"},\n    {\"type\": \"admin_dashboard\", \"count\": 1, \"quote\": \"後台給店家看報表\"}\n  ],\n  \"flags\": [\n    {\"type\": \"rush\", \"quote\": \"希望一個多月內上線\"}\n  ]\n}",
+   "extract_ms": 27326,
+   "draft": "您好，我看到您在寻找一个点数回馈平台。 我非常理解您希望建立一个包含会员注册登录、消费积分累积和积分兑换的功能。 此外，您也需要一个供店家查看报表的后台系统，并且希望支持手机端使用。 我有信心能为您实现这个目标。 我提供的服务费用是 {{PRICE}}，预计完成时间为 {{DAYS}}。",
+   "draft_ms": 9639
+  },
+  {
+   "id": "syn-14",
+   "extract": "{\n  \"budget\": {\"quote\": \"$8,000\", \"per\": \"project\"},\n  \"components\": [\n    {\"type\": \"shopify_theme\", \"count\": 1, \"quote\": \"I have a business plan and logo ready\"}\n  ],\n  \"flags\": [\n    {\"type\": \"unlimited_revisions\", \"quote\": \"Looking for long term partner who can keep improving it after launch\"}\n  ]\n}",
+   "extract_ms": 10255,
+   "draft": "Hello. I read about your project to build an Airbnb specifically for dog owners and sitters. I find the idea of connecting pet owners and sitters very interesting. Before I put together a proposal, I need to understand a couple of things. Could you share more about your budget for this project. Also, what is the expected scope of work you envision for the initial build.",
+   "draft_ms": 4566
+  },
+  {
+   "id": "syn-06",
+   "extract": "{\n  \"budget\": {\"quote\": \"compensate generously once we close our seed round (expected next quarter)\", \"per\": \"project\"},\n  \"components\": [\n    {\"type\": \"login\", \"count\": 1, \"quote\": \"login\"}\n  ],\n  \"flags\": [\n    {\"type\": \"pay_on_success\", \"quote\": \"compensate generously once we close our seed round (expected next quarter)\"}\n  ]\n}",
+   "extract_ms": 14177,
+   "draft": "",
+   "draft_ms": 0
+  },
+  {
+   "id": "syn-19",
+   "extract": "{\n  \"budget\": {\"quote\": \"6-8 萬\", \"per\": \"project\"},\n  \"components\": [\n    {\"type\": \"page\", \"count\": 1, \"quote\": \"開發內部的請假與排班系統（網頁版）\"}\n  ],\n  \"flags\": [\n    {\"type\": \"onsite\", \"quote\": \"前兩個月每週一早上 9 點要到我們辦公室參加站立會議\"}\n  ]\n}",
+   "extract_ms": 14977,
+   "draft": "",
+   "draft_ms": 0
+  },
+  {
+   "id": "syn-05",
+   "extract": "{\n  \"budget\": {\"quote\": \"$1,500\", \"per\": \"project\"},\n  \"components\": [\n    {\"type\": \"admin_dashboard\", \"count\": 1, \"quote\": \"build us a dashboard to manage 40 Instagram accounts from one phone setup\"}\n  ],\n  \"flags\": [\n    {\"type\": \"tos_grey\", \"quote\": \"without getting flagged\"}\n  ]\n}",
+   "extract_ms": 14764,
+   "draft": "",
+   "draft_ms": 0
+  },
+  {
+   "id": "syn-08",
+   "extract": "{\n  \"budget\": {\"quote\": \"$1,800\", \"per\": \"project\"},\n  \"components\": [\n    {\"type\": \"page\", \"count\": 5, \"quote\": \"We need a 5-page marketing website for our accounting practice (Home, Services, About, Team, Contact)\"}\n  ],\n  \"flags\": [\n    {\"type\": \"rush\", \"quote\": \"We'd like it delivered within 4 weeks.\"}\n  ]\n}",
+   "extract_ms": 16383,
+   "draft": "Hello. I have read your request for a five-page marketing website for your accounting practice. I understand you need a site with sections for Home, Services, About, Team, and Contact, along with a simple CMS for blog posts. The design is provided in Figma, and the copy and photos will be ready for me. I can complete this project for {{PRICE}} and within {{DAYS}}. I have included a link to a similar site I have built in a previous project.",
+   "draft_ms": 14228
+  },
+  {
+   "id": "syn-02",
+   "extract": "{\n  \"budget\": {\"quote\": \"$15-20/hr\", \"per\": \"hour\"},\n  \"components\": [\n    {\"type\": \"admin_dashboard\", \"count\": 1, \"quote\": \"finish a React dashboard\"},\n    {\"type\": \"login\", \"count\": 1, \"quote\": \"filters and the export to excel are broken\"}\n  ],\n  \"flags\": [\n    {\"type\": \"rush\", \"quote\": \"Start asap\"}\n  ]\n}",
+   "extract_ms": 16446,
+   "draft": "",
+   "draft_ms": 0
+  },
+  {
+   "id": "syn-12",
+   "extract": "{\n  \"budget\": {\"quote\": \"$500-5000\", \"per\": \"project\"},\n  \"components\": [\n    {\"type\": \"page\", \"count\": 4, \"quote\": \"home, about, services, contact\"}\n  ],\n  \"flags\": [\n    {\"type\": \"rush\", \"quote\": \"not in a hurry\"}\n  ]\n}",
+   "extract_ms": 15299,
+   "draft": "Hello. I read about your need for a website for your consulting business. I understand you are looking for pages like home, about, services, and contact, with a potential blog and booking feature later on. I would like to learn a bit more about your vision for the site. Could you please share more details about your budget for this project. Also, understanding the exact scope you envision will help me provide an accurate proposal.",
+   "draft_ms": 13100
+  },
+  {
+   "id": "syn-22",
+   "extract": "{\n  \"budget\": {\"quote\": \"預算可以談\", \"per\": \"project\"},\n  \"components\": [\n    {\"type\": \"shopify_theme\", \"count\": 1, \"quote\": \"想做一個會員制的線上課程網站\"}\n  ],\n  \"flags\": []\n}",
+   "extract_ms": 8414,
+   "draft": "您好，我很高兴看到您正在寻找一个会员制的线上课程网站。 我仔细阅读了您的需求，特别是关于学员可以注册、购买课程并观看影片的功能。 在我提供报价之前，我想先了解一下您的预算范围。 另外，关于您期望的具体功能范围，也请您详细说明一下。 期待能有机会与您进一步沟通。",
+   "draft_ms": 7611
+  },
+  {
+   "id": "hist-09",
+   "extract": "{\n  \"budget\": null,\n  \"components\": [\n    {\"type\": \"ai_feature\", \"count\": 1, \"quote\": \"要能避開平台風控偵測\"}\n  ],\n  \"flags\": [\n    {\"type\": \"tos_grey\", \"quote\": \"要能避開平台風控偵測\"}\n  ]\n}",
+   "extract_ms": 11237,
+   "draft": "",
+   "draft_ms": 0
+  }
+ ]
+}

@@ -45,7 +45,10 @@ function saveProfile() {
 // ---------- examples ----------
 function renderExamples() {
   $('examples').innerHTML = RECORDED.examples
-    .map((e) => `<button class="ex ${e.id === state.exampleId && state.mode === 'recorded' ? 'on' : ''}" data-id="${e.id}" type="button"><b class="${e.recordedVerdict}">${e.platform}</b>${esc(e.title)}</button>`)
+    .map((e) => {
+      const v = triage(parseJSON(e.extract) || {}, e.post, e.lead_cost, state.profile).decision.verdict;
+      return `<button class="ex ${e.id === state.exampleId && state.mode === 'recorded' ? 'on' : ''}" data-id="${e.id}" type="button"><b class="${v}">${e.platform} · ${v === 'CLOSE' ? 'close call' : v.toLowerCase()}</b>${esc(e.title)}</button>`;
+    })
     .join('');
   for (const b of $('examples').querySelectorAll('.ex')) b.onclick = () => pickExample(b.dataset.id);
 }
@@ -278,6 +281,7 @@ function bindProfile() {
       proposalHours: Math.max(0, Number($('ph').value) || 0),
     };
     saveProfile();
+    renderExamples();
     render();
   };
   for (const id of ['floor', 'minp', 'win', 'ph']) $(id).addEventListener('input', upd);
