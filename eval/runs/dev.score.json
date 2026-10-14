@@ -33,9 +33,9 @@
   },
   "reader": {
    "claims": 93,
-   "dropped_by_verifier": "18/93 (19%)",
+   "dropped_by_verifier": "19/93 (20%)",
    "dropped_why": {
-    "quote is real but does not say that": 12,
+    "quote is real but does not say that": 13,
     "no amount that code can read": 6
    },
    "json_parse_fail": 0,
@@ -204,10 +204,10 @@
    "rules_only": "CLOSE",
    "leadtoll": "CLOSE",
    "dropped": [
-    "component:shopify_theme:I have a business plan and logo ready"
+    "component:shopify_theme:I have a business plan and logo ready",
+    "flag:unlimited_revisions:Looking for long term partner who can keep improvi"
    ],
    "flags": [
-    "unlimited_revisions(model)",
     "clone_big_app(rule)"
    ],
    "budget": "8000-8000 USD"

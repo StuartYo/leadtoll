@@ -3,7 +3,7 @@
 import { CreateMLCEngine, CreateWebWorkerMLCEngine } from '@mlc-ai/web-llm';
 
 export const MODEL_ID = 'gemma-4-E2B-it-q4f16_1-MLC';
-export const MODEL_LABEL = 'Gemma 4 E2B (4-bit, about 2 GB)';
+export const MODEL_LABEL = 'Gemma 4 E2B (4-bit, about 2.8 GB)';
 
 let engine = null;
 

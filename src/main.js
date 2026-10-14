@@ -81,6 +81,9 @@ function setMode(m) {
   else {
     state.raw = null;
     state.draftText = '';
+    state.feeTouched = false;
+    $('fee').value = '';
+    $('feeCur').value = 'USD';
     render();
     checkGpu();
   }
@@ -289,7 +292,11 @@ function bindProfile() {
     state.lead = { amount: Number($('fee').value) || 0, currency: $('feeCur').value };
     if (state.raw) render();
   });
-  $('post').addEventListener('input', () => { state.raw = null; });
+  $('post').addEventListener('input', () => {
+    state.raw = null;
+    if (!state.feeTouched) $('feeCur').value = /[一-鿿]/.test($('post').value) ? 'TWD' : 'USD';
+  });
+  for (const id of ['fee', 'feeCur']) $(id).addEventListener('change', () => { state.feeTouched = true; });
   $('edit').addEventListener('click', () => { state.raw = null; render(); $('post').focus(); });
 }
 

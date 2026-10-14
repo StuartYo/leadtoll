@@ -6,8 +6,8 @@ Upwork (Connects), Thumbtack, Bark and PRO360 charge freelancers before the firs
 
 Live: https://leadtoll.vercel.app
 
-- **Gemma 4 E2B runs in your browser** through [WebLLM](https://github.com/mlc-ai/web-llm) and WebGPU. The post, your rates and your win rate never leave the page. The model is about 2 GB, downloads once from Hugging Face and then works offline.
-- **The model only reads.** It copies the budget, the pieces of work and any warning signs out of the post, each with an exact quote. Output is held to a JSON schema by WebLLM's grammar engine.
+- **Gemma 4 E2B runs in your browser** through [WebLLM](https://github.com/mlc-ai/web-llm) and WebGPU. The post, your rates and your win rate never leave the page. The model is about 2.8 GB, downloads once from Hugging Face and then works offline.
+- **The model only reads.** It copies the budget, the pieces of work and any warning signs out of the post, each with an exact quote. Output is held to a small hand-written grammar through WebLLM's constrained decoding, so it is always valid JSON with known labels.
 - **Code checks and decides.** A quote that is not in the post is thrown out. A real quote under the wrong label is thrown out too ("mobile responsive design" is not a Shopify theme). Amounts are parsed from the quote by code. Hard no's end the lead. Everything else goes through one formula:
 
 ```
@@ -38,6 +38,15 @@ node scripts/score.mjs eval/runs/<run>.json eval/<set>.jsonl --rows
 To re-run the model: `npx vite build --outDir <dir>`, `npx vite preview --outDir <dir> --port 5179`, then `node scripts/run-eval.mjs <name> eval/<set>.jsonl` (drives your installed Chrome with Playwright).
 
 The numbers are in `eval/runs/*.score.json`; CI re-scores every saved run and fails if they drift.
+
+| Verdict matches the label | Dev (32) | Holdout 1 (12) | Holdout 2 (16, run once) |
+|---|---|---|---|
+| Same Gemma, one prompt with the same rules | 20 | 6 | 11 |
+| Text rules only, no model | 29 (tuned on this set) | 9 | 10 |
+| Gemma read, nothing checked | 27 | 9 | 12 |
+| LeadToll | 30 | 9 | 14 (15 after one fix) |
+
+Holdout 1 scored 6/12 on the frozen v1 code before I used it to find bugs. On holdout 2, LeadToll paid for one lead it should have skipped; the cause and the fix are in the write-up.
 
 All example posts are made up or rewritten; no client text, names or contact details are included.
 
