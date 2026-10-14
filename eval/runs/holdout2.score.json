@@ -13,9 +13,9 @@
     "json_parse_fail": 0
    },
    "rules_only": {
-    "verdict_accuracy": "10/16 (63%)",
+    "verdict_accuracy": "5/16 (31%)",
     "hard_no_caught": "1/5",
-    "paid_on_hard_no": 4,
+    "paid_on_hard_no": 0,
     "budget_read_correctly": "16/16"
    },
    "model_unverified": {
@@ -25,7 +25,7 @@
     "budget_read_correctly": "16/16"
    },
    "leadtoll": {
-    "verdict_accuracy": "15/16 (94%)",
+    "verdict_accuracy": "14/16 (88%)",
     "hard_no_caught": "4/5",
     "paid_on_hard_no": 0,
     "budget_read_correctly": "16/16"
@@ -47,7 +47,7 @@
    "id": "h2-01",
    "gold": "PAY",
    "baseline": "PAY",
-   "rules_only": "PAY",
+   "rules_only": "CLOSE",
    "leadtoll": "PAY",
    "dropped": [
     "flag:rush:Would like it live in about 6 weeks"
@@ -59,7 +59,7 @@
    "id": "h2-02",
    "gold": "SKIP",
    "baseline": "SKIP",
-   "rules_only": "PAY",
+   "rules_only": "CLOSE",
    "leadtoll": "SKIP",
    "dropped": [],
    "flags": [
@@ -71,7 +71,7 @@
    "id": "h2-03",
    "gold": "SKIP",
    "baseline": "PAY",
-   "rules_only": "PAY",
+   "rules_only": "CLOSE",
    "leadtoll": "SKIP",
    "dropped": [
     "flag:rush:long term"
@@ -83,7 +83,7 @@
    "id": "h2-04",
    "gold": "PAY",
    "baseline": "PAY",
-   "rules_only": "PAY",
+   "rules_only": "CLOSE",
    "leadtoll": "PAY",
    "dropped": [
     "component:native_app:Posts an alert to a Telegram group when a SKU drop"
@@ -109,7 +109,7 @@
    "id": "h2-06",
    "gold": "CLOSE",
    "baseline": "PAY",
-   "rules_only": "PAY",
+   "rules_only": "CLOSE",
    "leadtoll": "CLOSE",
    "dropped": [
     "flag:rush:Would like it done in 2 weeks"
@@ -121,7 +121,7 @@
    "id": "h2-07",
    "gold": "SKIP",
    "baseline": "PAY",
-   "rules_only": "PAY",
+   "rules_only": "CLOSE",
    "leadtoll": "SKIP",
    "dropped": [
     "flag:rush:this should go quick"
@@ -135,7 +135,7 @@
    "id": "h2-08",
    "gold": "SKIP",
    "baseline": "SKIP",
-   "rules_only": "PAY",
+   "rules_only": "CLOSE",
    "leadtoll": "CLOSE",
    "dropped": [
     "flag:rush:logs into each dealer portal every night"
@@ -159,7 +159,7 @@
    "id": "h2-10",
    "gold": "PAY",
    "baseline": "PAY",
-   "rules_only": "PAY",
+   "rules_only": "CLOSE",
    "leadtoll": "PAY",
    "dropped": [],
    "flags": [],
@@ -179,7 +179,7 @@
    "id": "h2-12",
    "gold": "PAY",
    "baseline": "PAY",
-   "rules_only": "PAY",
+   "rules_only": "CLOSE",
    "leadtoll": "PAY",
    "dropped": [
     "flag:rush:希望兩個月內上線"
@@ -191,7 +191,7 @@
    "id": "h2-13",
    "gold": "PAY",
    "baseline": "PAY",
-   "rules_only": "PAY",
+   "rules_only": "CLOSE",
    "leadtoll": "PAY",
    "dropped": [
     "flag:rush:之前找過兩家都說做不完，這次希望找認真的人"
@@ -203,8 +203,8 @@
    "id": "h2-14",
    "gold": "PAY",
    "baseline": "PAY",
-   "rules_only": "PAY",
-   "leadtoll": "PAY",
+   "rules_only": "CLOSE",
+   "leadtoll": "CLOSE",
    "dropped": [
     "component:erp_suite:人資可匯出月報表（Excel）",
     "flag:rush:工期 6 週"
@@ -229,7 +229,7 @@
    "id": "h2-16",
    "gold": "SKIP",
    "baseline": "SKIP",
-   "rules_only": "PAY",
+   "rules_only": "CLOSE",
    "leadtoll": "SKIP",
    "dropped": [],
    "flags": [

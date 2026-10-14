@@ -39,14 +39,16 @@ To re-run the model: `npx vite build --outDir <dir>`, `npx vite preview --outDir
 
 The numbers are in `eval/runs/*.score.json`; CI re-scores every saved run and fails if they drift.
 
+Scored with the code frozen before holdout 2 (commit `1d97c7b`; the arms are defined in `scripts/score.mjs`):
+
 | Verdict matches the label | Dev (32) | Holdout 1 (12) | Holdout 2 (16, run once) |
 |---|---|---|---|
 | Same Gemma, one prompt with the same rules | 20 | 6 | 11 |
 | Text rules only, no model | 29 (tuned on this set) | 9 | 10 |
 | Gemma read, nothing checked | 27 | 9 | 12 |
-| LeadToll | 30 | 9 | 14 (15 after one fix) |
+| LeadToll | 30 | 9 | 14 |
 
-Holdout 1 scored 6/12 on the frozen v1 code before I used it to find bugs. On holdout 2, LeadToll paid for one lead it should have skipped; the cause and the fix are in the write-up.
+Holdout 1 scored 6/12 on the earlier v1 code before I used it to find bugs. On holdout 2 the frozen code paid for one lead it should have skipped (Gemma copied the on-site quote in Simplified Chinese, so the checker threw it out). The current code converts such quotes with OpenCC and pays for no hard-no lead in any set; it still scores 30 / 9 / 14 because it also refuses to say Pay when no work could be counted. The current per-arm numbers are in `eval/runs/*.score.json` (the "rules only" arm can no longer say Pay at all, since it counts no work).
 
 All example posts are made up or rewritten; no client text, names or contact details are included.
 

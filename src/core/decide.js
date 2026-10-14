@@ -91,9 +91,12 @@ export function decide(facts, lead, profileIn) {
     reasons.push({ kind: 'money', text: `You would need to win ${pct(breakEven)} of leads like this. You win about ${pct(profile.winRate)}.` });
   }
   const fuzzy = facts.flags.find((f) => f.type === 'clone_big_app' || f.type === 'vague_scope');
-  if (verdict === 'PAY' && fuzzy) {
+  const nothingCounted = est.lines.length === 1;
+  if (verdict === 'PAY' && (fuzzy || nothingCounted)) {
     verdict = 'CLOSE';
-    reasons.unshift({ kind: 'money', text: 'The numbers work, but the scope cannot be counted from the post, so the hours estimate is weak.' });
+    reasons.unshift({ kind: 'money', text: nothingCounted
+      ? 'The budget looks fine, but no piece of work in the post could be counted, so the hours estimate means nothing yet.'
+      : 'The numbers work, but the scope cannot be counted from the post, so the hours estimate is weak.' });
   }
   for (const f of facts.flags.filter((f) => !FLAGS[f.type]?.hard)) {
     reasons.push({ kind: 'soft', text: FLAGS[f.type]?.label || f.type, quote: f.quote });

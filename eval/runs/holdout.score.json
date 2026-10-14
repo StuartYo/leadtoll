@@ -13,9 +13,9 @@
     "json_parse_fail": 0
    },
    "rules_only": {
-    "verdict_accuracy": "9/12 (75%)",
+    "verdict_accuracy": "5/12 (42%)",
     "hard_no_caught": "0/3",
-    "paid_on_hard_no": 3,
+    "paid_on_hard_no": 0,
     "budget_read_correctly": "12/12"
    },
    "model_unverified": {
@@ -48,7 +48,7 @@
    "id": "hold-01",
    "gold": "PAY",
    "baseline": "PAY",
-   "rules_only": "PAY",
+   "rules_only": "CLOSE",
    "leadtoll": "PAY",
    "dropped": [
     "flag:rush:3 month trial and then go quarterly if it works ou"
@@ -60,7 +60,7 @@
    "id": "hold-02",
    "gold": "PAY",
    "baseline": "PAY",
-   "rules_only": "PAY",
+   "rules_only": "CLOSE",
    "leadtoll": "PAY",
    "dropped": [
     "flag:rush:live in six to eight weeks"
@@ -72,7 +72,7 @@
    "id": "hold-03",
    "gold": "SKIP",
    "baseline": "SKIP",
-   "rules_only": "PAY",
+   "rules_only": "CLOSE",
    "leadtoll": "SKIP",
    "dropped": [],
    "flags": [
@@ -84,7 +84,7 @@
    "id": "hold-04",
    "gold": "PAY",
    "baseline": "PAY",
-   "rules_only": "PAY",
+   "rules_only": "CLOSE",
    "leadtoll": "SKIP",
    "dropped": [
     "flag:pay_on_success:Fixed price $800."
@@ -108,7 +108,7 @@
    "id": "hold-06",
    "gold": "SKIP",
    "baseline": "PAY",
-   "rules_only": "PAY",
+   "rules_only": "CLOSE",
    "leadtoll": "SKIP",
    "dropped": [],
    "flags": [
@@ -156,7 +156,7 @@
    "id": "hold-10",
    "gold": "PAY",
    "baseline": "PAY",
-   "rules_only": "PAY",
+   "rules_only": "CLOSE",
    "leadtoll": "PAY",
    "dropped": [
     "flag:rush:希望一個半月內可以上線"
@@ -168,7 +168,7 @@
    "id": "hold-11",
    "gold": "SKIP",
    "baseline": "SKIP",
-   "rules_only": "PAY",
+   "rules_only": "CLOSE",
    "leadtoll": "SKIP",
    "dropped": [
     "budget::2.5 萬，先做一間，做得好再給其他間。</div>",
