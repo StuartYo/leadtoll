@@ -44,20 +44,26 @@ export function parseMoney(text) {
   // "$1.5 million" -> "$1500000"
   s = s.replace(/(\d+(?:\.\d+)?)\s*(?:million|mil|m)\b/gi, (_, n) => String(Math.round(parseFloat(n) * 1e6)));
   // 預算五萬 / 十五萬 / 兩萬 -> 預算 50000
+  // 一萬二 -> 12000 (the trailing digit is the next place down)
+  s = s.replace(/([一二兩三四五六七八九十]{1,3})\s*(萬|万)([一二兩三四五六七八九])(?![千百])/g, (_, w, u, t) => String(zhNum(w) * 10000 + ZH[t] * 1000) + ' 元');
   s = s.replace(/([一二兩三四五六七八九十]{1,3})\s*(萬|万|千)/g, (_, w, u) => String(zhNum(w) * (u === '千' ? 1000 : 10000)) + ' 元');
   let currency = null;
   if (/NT\$|NTD|TWD|新台幣|台幣|元|萬|万/.test(s)) currency = 'TWD';
   if (/US\$|USD|\$|dollars?/i.test(s) && !/NT\$/.test(s)) currency = currency === 'TWD' && /萬|元/.test(s) ? 'TWD' : 'USD';
-  const per = /\/\s*h(ou)?r|per hour|an hour|hourly|時薪|每小時/i.test(s) ? 'hour' : 'project';
+  const per = /\/\s*h(ou)?r|per hour|an hour|hourly|時薪|每小時/i.test(s)
+    ? 'hour'
+    : /\/\s*mo(nth)?\b|per month|a month|monthly|每月|月費|每個月/i.test(s)
+      ? 'month'
+      : 'project';
 
   const range = /(\d[\d,]*(?:\.\d+)?\s*[kK]?)\s*(?:萬|万)?\s*(?:-|–|—|~|～|to|至|到)\s*\$?\s*(\d[\d,]*(?:\.\d+)?\s*[kK]?)/;
   const single = /(\d[\d,]*(?:\.\d+)?\s*[kK]?)/;
   // Only look at numbers attached to a money marker or the word budget, to avoid "5,000 users".
   const anchored = new RegExp(
     String.raw`(?:US\$|NT\$|\$|USD|TWD|預算|budget|pay|paying|set aside|cap|up to|最多)[^\d]{0,12}` + range.source +
-    `|` + range.source + String.raw`\s*(?:萬|万|元|USD|TWD|dollars|/\s*h)` +
+    `|` + range.source + String.raw`\s*(?:萬|万|元|USD|TWD|NTD|dollars|/\s*h)` +
     String.raw`|(?:US\$|NT\$|\$|USD|TWD|預算|budget|set aside|up to|最多)[^\d]{0,12}` + single.source +
-    `|` + single.source + String.raw`\s*(?:萬|万|元|USD|TWD|dollars|[kK]\b)`,
+    `|` + single.source + String.raw`\s*(?:萬|万|元|USD|TWD|NTD|dollars|[kK]\b)`,
     'i'
   );
   const m = s.match(anchored);
@@ -78,7 +84,7 @@ export function parseMoney(text) {
   let min = lo, max = hi ?? lo;
   if (hi == null) {
     if (/以下|以內|under|below|up to|max|最多|at most|or less/i.test(s)) min = null;
-    else if (/以上|over|at least|from|起/i.test(s)) max = null;
+    else if (/以上|over|at least|from|起/i.test(s) || /\d\s*\+/.test(m[0] + after)) max = null;
   }
   if (min != null && max != null && min > max) [min, max] = [max, min];
   return { min, max, currency: currency || 'USD', per };

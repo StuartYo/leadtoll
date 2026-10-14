@@ -30,3 +30,10 @@ describe('more money', () => {
   it('two grand', () => expect(parseMoney('Budget is about two grand, give or take')).toMatchObject({ min: 2000, max: 2000, currency: 'USD' }));
   it('1.5k-2k', () => expect(parseMoney('budget 1.5k-2k')).toMatchObject({ min: 1500, max: 2000 }));
 });
+
+describe('round 2 money', () => {
+  it('一萬二', () => expect(parseMoney('預算一萬二')).toMatchObject({ min: 12000, max: 12000, currency: 'TWD' }));
+  it('$25,000+', () => expect(parseMoney('$25,000+ budget')).toMatchObject({ min: 25000, max: null }));
+  it('5000 NTD', () => expect(parseMoney('5000 NTD')).toMatchObject({ min: 5000, currency: 'TWD' }));
+  it('per month', () => expect(parseMoney('$400-600 a month')).toMatchObject({ per: 'month' }));
+});

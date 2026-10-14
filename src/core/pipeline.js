@@ -1,6 +1,6 @@
 import { quoteInPost, locate } from './verify.js';
 import { parseMoney } from './money.js';
-import { ruleFlags, ruleNoGo, LABEL_WORDS, NEGATED_ONSITE } from './rules.js';
+import { ruleFlags, ruleNoGo, ruleWork, LABEL_WORDS, NEGATED_ONSITE } from './rules.js';
 import { COMPONENTS, FLAGS } from './catalog.js';
 import { decide } from './decide.js';
 import { toTW, hasCJK } from './zh.js';
@@ -101,7 +101,10 @@ export function verifyExtraction(raw, post, { useRules = true, useModel = true }
     for (const r of ruleFlags(post)) {
       if (!facts.flags.some((f) => f.type === r.type)) facts.flags.push(r);
     }
-    for (const r of ruleNoGo(post)) {
+    // Named work is only added when Gemma counted at most one piece of work; otherwise it tends to
+    // double count (a "LINE booking bot" is already a chatbot).
+    const fewCounted = facts.components.length <= 1;
+    for (const r of [...ruleNoGo(post), ...(fewCounted ? ruleWork(post) : [])]) {
       if (!facts.components.some((c) => c.type === r.type)) facts.components.push(r);
     }
     // Budget backstop: if the model gave none, code looks for an amount next to a money word.

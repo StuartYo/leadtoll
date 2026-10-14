@@ -43,11 +43,15 @@ export function decide(facts, lead, profileIn) {
 
   // Value of the job in the profile currency.
   let value = null, valueNote = '';
+  let workHours = est.mid;
   const b = facts.budget;
-  if (b) {
+  if (b && b.per === 'month') {
+    valueNote = 'monthly';
+  } else if (b) {
     if (b.per === 'hour') {
       const rate = b.max ?? b.min;
       const hours = b.hours ?? est.mid;
+      workHours = hours;
       value = convert(rate * hours, b.currency, cur);
       valueNote = b.hours ? `${rate}/h x ${b.hours} h stated` : `${rate}/h x ${Math.round(est.mid)} h estimated`;
       if (convert(rate, b.currency, cur) < profile.floorRate) reasons.push({ kind: 'money', text: `Hourly rate is below your floor of ${fmt(profile.floorRate, cur)}/h.` });
@@ -57,7 +61,7 @@ export function decide(facts, lead, profileIn) {
       valueNote = b.max != null ? 'top of the stated budget' : 'stated minimum';
     }
   }
-  const workCost = est.mid * profile.floorRate;
+  const workCost = workHours * profile.floorRate;
   const surplus = value == null ? null : value - workCost;
   const breakEven = surplus != null && surplus > 0 ? bidCost / surplus : null;
 
@@ -71,12 +75,17 @@ export function decide(facts, lead, profileIn) {
   } else if (b && b.per !== 'hour' && b.min > 0 && b.max / b.min >= 3) {
     verdict = 'CLOSE';
     reasons.push({ kind: 'money', text: `The budget runs from ${fmt(convert(b.min, b.currency, cur), cur)} to ${fmt(convert(b.max, b.currency, cur), cur)}. The client has not decided, so the lead cannot be priced yet.` });
+  } else if (b && b.per === 'month') {
+    verdict = 'CLOSE';
+    reasons.push({ kind: 'money', text: `This is a monthly retainer (${fmt(convert(b.min ?? b.max, b.currency, cur), cur)}${b.max != null && b.max !== b.min ? ' to ' + fmt(convert(b.max, b.currency, cur), cur) : ''} a month). LeadToll prices one-off projects, so check the hours per month yourself.` });
   } else if (value == null) {
     verdict = 'CLOSE';
     reasons.push({ kind: 'money', text: 'No budget in the post, so the lead cannot be priced. Pay only if the platform lets you ask first or the fee is tiny.' });
   } else if (surplus <= 0) {
     verdict = 'SKIP';
-    reasons.push({ kind: 'money', text: `The budget (${fmt(value, cur)}) is ${fmt(-surplus, cur)} short of your floor for about ${Math.round(est.mid)} hours of work.` });
+    reasons.push({ kind: 'money', text: Math.round(surplus) === 0
+      ? `The budget (${fmt(value, cur)}) only just covers your floor for about ${Math.round(workHours)} hours of work, with nothing left to pay for the bid.`
+      : `The budget (${fmt(value, cur)}) is ${fmt(-surplus, cur)} short of your floor for about ${Math.round(workHours)} hours of work.` });
   } else if (value < profile.minProject) {
     verdict = 'SKIP';
     reasons.push({ kind: 'money', text: `Below your minimum project of ${fmt(profile.minProject, cur)}.` });
@@ -110,7 +119,7 @@ export function decide(facts, lead, profileIn) {
     if (lo != null && hi != null) quote = Math.min(hi, Math.max(quote, (lo + hi) / 2));
   }
   quote = Math.ceil(quote / step) * step;
-  return { verdict, reasons, est, value, valueNote, workCost, surplus, bidCost, leadCost, breakEven, suggestedQuote: quote, currency: cur };
+  return { verdict, reasons, est, workHours, value, valueNote, workCost, surplus, bidCost, leadCost, breakEven, suggestedQuote: quote, currency: cur };
 }
 
 export function fmt(v, cur) {

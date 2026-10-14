@@ -13,9 +13,9 @@
     "json_parse_fail": 0
    },
    "rules_only": {
-    "verdict_accuracy": "18/32 (56%)",
+    "verdict_accuracy": "26/32 (81%)",
     "hard_no_caught": "6/7",
-    "paid_on_hard_no": 0,
+    "paid_on_hard_no": 1,
     "budget_read_correctly": "30/32"
    },
    "model_unverified": {
@@ -47,7 +47,7 @@
    "id": "syn-01",
    "gold": "PAY",
    "baseline": "PAY",
-   "rules_only": "CLOSE",
+   "rules_only": "PAY",
    "leadtoll": "PAY",
    "dropped": [],
    "flags": [
@@ -59,7 +59,7 @@
    "id": "syn-02",
    "gold": "SKIP",
    "baseline": "PAY",
-   "rules_only": "CLOSE",
+   "rules_only": "SKIP",
    "leadtoll": "SKIP",
    "dropped": [],
    "flags": [
@@ -71,7 +71,7 @@
    "id": "syn-03",
    "gold": "SKIP",
    "baseline": "SKIP",
-   "rules_only": "CLOSE",
+   "rules_only": "PAY",
    "leadtoll": "SKIP",
    "dropped": [],
    "flags": [
@@ -83,7 +83,7 @@
    "id": "syn-04",
    "gold": "PAY",
    "baseline": "PAY",
-   "rules_only": "CLOSE",
+   "rules_only": "PAY",
    "leadtoll": "PAY",
    "dropped": [
     "flag:rush:Hoping for launch before our anniversary in 7 week"
@@ -135,7 +135,7 @@
    "id": "syn-08",
    "gold": "PAY",
    "baseline": "PAY",
-   "rules_only": "CLOSE",
+   "rules_only": "PAY",
    "leadtoll": "PAY",
    "dropped": [
     "flag:rush:We'd like it delivered within 4 weeks."
@@ -147,7 +147,7 @@
    "id": "syn-09",
    "gold": "PAY",
    "baseline": "PAY",
-   "rules_only": "CLOSE",
+   "rules_only": "PAY",
    "leadtoll": "PAY",
    "dropped": [],
    "flags": [],
@@ -255,7 +255,7 @@
    "id": "syn-18",
    "gold": "PAY",
    "baseline": "PAY",
-   "rules_only": "CLOSE",
+   "rules_only": "SKIP",
    "leadtoll": "SKIP",
    "dropped": [
     "flag:rush:希望一個月內上線"
@@ -314,7 +314,7 @@
    "id": "hist-01",
    "gold": "PAY",
    "baseline": "PAY",
-   "rules_only": "CLOSE",
+   "rules_only": "PAY",
    "leadtoll": "PAY",
    "dropped": [
     "flag:rush:希望一個多月內上線"
@@ -326,7 +326,7 @@
    "id": "hist-02",
    "gold": "PAY",
    "baseline": "PAY",
-   "rules_only": "CLOSE",
+   "rules_only": "PAY",
    "leadtoll": "PAY",
    "dropped": [],
    "flags": [],
@@ -346,7 +346,7 @@
    "id": "hist-04",
    "gold": "PAY",
    "baseline": "PAY",
-   "rules_only": "CLOSE",
+   "rules_only": "PAY",
    "leadtoll": "PAY",
    "dropped": [],
    "flags": [],

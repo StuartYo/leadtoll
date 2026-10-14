@@ -180,8 +180,11 @@ function render() {
   const word = { PAY: 'Pay', SKIP: 'Skip', CLOSE: 'Close call' }[d.verdict];
   $('verdict').innerHTML = `<span class="word ${d.verdict}">${word}</span><span class="head">${esc(d.reasons[0]?.text || '')}</span>`;
 
+  // A hard no or an out-of-stack item ends the lead; the money grid would only distract.
+  const ended = d.verdict === 'SKIP' && (d.reasons[0]?.kind === 'hard' || d.reasons[0]?.kind === 'stack');
+  const counted = d.est.lines.length > 1;
   // break-even meter
-  if (d.breakEven != null) {
+  if (d.breakEven != null && !ended && counted) {
     const max = Math.max(0.5, Math.min(1, Math.max(d.breakEven, p.winRate) * 1.3));
     const pos = (x) => Math.min(100, (x / max) * 100);
     const ok = d.breakEven <= p.winRate;
@@ -195,15 +198,17 @@ function render() {
   } else $('meter').innerHTML = '';
 
   const cur = d.currency;
+  const b = t.facts.budget;
+  const ranged = b && b.per === 'project' && b.min != null && b.max != null && b.max !== b.min;
   const cells = [
-    ['Job pays', d.value == null ? 'not stated' : fmt(d.value, cur)],
-    ['Work at your floor', `${fmt(d.workCost, cur)}`],
-    ['Above your floor', d.surplus == null ? 'n/a' : fmt(d.surplus, cur)],
+    [ranged ? 'Job pays (up to)' : 'Job pays', d.value == null ? (b?.per === 'month' ? 'monthly' : 'not stated') : fmt(d.value, cur)],
+    ['Work at your floor', counted ? fmt(d.workCost, cur) : 'not counted'],
+    ['Above your floor', d.surplus == null || !counted ? 'n/a' : fmt(d.surplus, cur)],
     ['Lead fee', fmt(d.leadCost, cur)],
     ['Cost per bid', fmt(d.bidCost, cur)],
-    ['Hours (est.)', `${d.est.low}-${d.est.high}`],
+    [b?.per === 'hour' && b.hours ? 'Hours (stated)' : 'Hours (est.)', b?.per === 'hour' && b.hours ? String(b.hours) : counted ? `${d.est.low}-${d.est.high}` : 'n/a'],
   ];
-  $('nums').innerHTML = cells.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
+  $('nums').innerHTML = ended ? '' : cells.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
 
   // reasons with quotes
   const rs = d.reasons.slice(d.reasons[0]?.kind === 'money' ? 0 : 0);

@@ -123,3 +123,26 @@ describe('round 1 review fixes', () => {
     expect(f.removed.length).toBe(1);
   });
 });
+
+describe('round 2 review fixes', () => {
+  it('a real on-site requirement next to a negation still counts', () => {
+    for (const t of ['需要到場教學，不用到店', '不需要進廠，但要到場驗收', 'Not remote: on-site only.']) expect(ruleFlags(t).map((f) => f.type)).toContain('onsite');
+  });
+  it('monthly retainers are a close call, not a project', () => {
+    const post = 'Looking for ongoing help with our site. $400-600 a month, about 5 pages to maintain.';
+    const d = triage({ budget: { quote: '$400-600 a month', per: 'project' }, components: [{ type: 'page', count: 5, quote: 'about 5 pages to maintain' }], flags: [] }, post, { amount: 2, currency: 'USD' }, P).decision;
+    expect(d.verdict).toBe('CLOSE');
+  });
+  it('drafts drop invented links but keep decimals and URLs whole', async () => {
+    const { finishDraft } = await import('../src/core/draft.js');
+    const post = 'We need a 5-page site. Budget is $1,800.';
+    const d = triage({ budget: { quote: 'Budget is $1,800', per: 'project' }, components: [{ type: 'page', count: 5, quote: 'We need a 5-page site' }], flags: [] }, post, { amount: 2, currency: 'USD' }, P).decision;
+    const f = finishDraft('Hello. See https://example.com/work for samples. I can do it for {{PRICE}}.', post, d);
+    expect(f.text).toBe('Hello. I can do it for $1,800.');
+    expect(f.removed[0].sentence).toContain('https://example.com/work');
+  });
+  it('work the post says it does not need is not counted', async () => {
+    const { ruleWork } = await import('../src/core/rules.js');
+    expect(ruleWork('想做 LINE 訂位機器人，不用做金流。').map((w) => w.type)).not.toContain('payments');
+  });
+});

@@ -13,9 +13,9 @@
     "json_parse_fail": 0
    },
    "rules_only": {
-    "verdict_accuracy": "5/12 (42%)",
+    "verdict_accuracy": "6/12 (50%)",
     "hard_no_caught": "0/3",
-    "paid_on_hard_no": 0,
+    "paid_on_hard_no": 1,
     "budget_read_correctly": "12/12"
    },
    "model_unverified": {
@@ -60,7 +60,7 @@
    "id": "hold-02",
    "gold": "PAY",
    "baseline": "PAY",
-   "rules_only": "CLOSE",
+   "rules_only": "PAY",
    "leadtoll": "PAY",
    "dropped": [
     "flag:rush:live in six to eight weeks"
@@ -108,7 +108,7 @@
    "id": "hold-06",
    "gold": "SKIP",
    "baseline": "PAY",
-   "rules_only": "CLOSE",
+   "rules_only": "PAY",
    "leadtoll": "SKIP",
    "dropped": [],
    "flags": [
@@ -132,7 +132,7 @@
    "id": "hold-08",
    "gold": "CLOSE",
    "baseline": "PAY",
-   "rules_only": "CLOSE",
+   "rules_only": "SKIP",
    "leadtoll": "SKIP",
    "dropped": [
     "flag:rush:we would like to launch before the end of next qua"
@@ -156,7 +156,7 @@
    "id": "hold-10",
    "gold": "PAY",
    "baseline": "PAY",
-   "rules_only": "CLOSE",
+   "rules_only": "PAY",
    "leadtoll": "PAY",
    "dropped": [
     "flag:rush:希望一個半月內可以上線"
