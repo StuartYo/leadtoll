@@ -16,7 +16,7 @@
     "verdict_accuracy": "18/32 (56%)",
     "hard_no_caught": "6/7",
     "paid_on_hard_no": 0,
-    "budget_read_correctly": "31/32"
+    "budget_read_correctly": "30/32"
    },
    "model_unverified": {
     "verdict_accuracy": "27/32 (84%)",

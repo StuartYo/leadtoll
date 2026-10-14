@@ -101,3 +101,25 @@ describe('simplified quotes', () => {
     expect(r.decision.verdict).toBe('SKIP');
   });
 });
+
+describe('round 1 review fixes', () => {
+  it('on-site negations are not flagged', () => {
+    for (const t of ['This is not an on-site job.', 'Remote only, never on site.', 'Fully remote, no on-site visits required.', 'On-site not required.']) expect(ruleFlags(t).length).toBe(0);
+  });
+  it('suggested price sits inside the client range', async () => {
+    const post = 'We need a 5-page site for our firm. Budget is $1,800.';
+    const raw = { budget: { quote: 'Budget is $1,800', per: 'project' }, components: [{ type: 'page', count: 5, quote: 'a 5-page site for our firm' }], flags: [] };
+    const d = triage(raw, post, { amount: 2, currency: 'USD' }, P).decision;
+    expect(d.suggestedQuote).toBe(1800);
+  });
+  it('drafts lose invented attachments and keep full-width punctuation', async () => {
+    const { finishDraft } = await import('../src/core/draft.js');
+    const post = '想做一個預約網站。預算 3 萬。';
+    const raw = { budget: { quote: '預算 3 萬', per: 'project' }, components: [{ type: 'booking', count: 1, quote: '想做一個預約網站' }], flags: [] };
+    const d = triage(raw, post, { amount: 200, currency: 'TWD' }, P).decision;
+    const f = finishDraft('您好，我看到您想做预约网站。我附上了作品连结。报价 {{PRICE}}。', post, d);
+    expect(f.text).toContain('您好，');
+    expect(f.text).not.toContain('附上');
+    expect(f.removed.length).toBe(1);
+  });
+});

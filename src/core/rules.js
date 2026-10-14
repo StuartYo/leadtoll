@@ -23,7 +23,7 @@ export function sentenceList(post) {
 }
 
 // "No need to come to the shop" is the opposite of an on-site requirement.
-export const NEGATED_ONSITE = /(不用|不需要?|不必|無須|免)[^，。,.]{0,6}(到|來|跑|進|去)|no need to (come|visit|be)|(don't|do not|won't|will not) (need|have) to (come|visit|be)|never (need|have) to (come|visit)|not required to (come|visit|be)/i;
+export const NEGATED_ONSITE = /(不用|不需要?|不必|無須|免)[^，。,.]{0,6}(到|來|跑|進|去)|no need to (come|visit|be)|(don't|do not|won't|will not) (need|have) to (come|visit|be)|never (need|have) to (come|visit)|not required to (come|visit|be)|\b(not|never|no)\b[^.,;]{0,25}\bon[- ]?site\b|\bon[- ]?site\b[^.,;]{0,25}\b(not required|not needed|isn't required|is not required|optional)\b|\b(remote only|fully remote|100% remote)\b/i;
 
 /** Returns [{type, quote, source:'rule'}]. Looks at each sentence and at each pair of neighbours. */
 export function ruleFlags(post) {

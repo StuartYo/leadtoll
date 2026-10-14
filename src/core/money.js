@@ -26,6 +26,14 @@ function num(s) {
  * Returns { min, max, currency, per } or null.
  * Handles: "$1,200", "US$ 500-800", "2k", "$15-20/hr", "預算 3–5 萬", "10~15萬", "3 萬以下", "NT$30,000".
  */
+const ZH = { 一: 1, 二: 2, 兩: 2, 三: 3, 四: 4, 五: 5, 六: 6, 七: 7, 八: 8, 九: 9 };
+function zhNum(w) {
+  if (w === '十') return 10;
+  if (w.startsWith('十')) return 10 + (ZH[w[1]] || 0);
+  if (w.includes('十')) return (ZH[w[0]] || 1) * 10 + (ZH[w[2]] || 0);
+  return ZH[w] || 0;
+}
+
 const WORDS = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, a: 1 };
 
 export function parseMoney(text) {
@@ -33,6 +41,10 @@ export function parseMoney(text) {
   let s = String(text).normalize('NFKC');
   // "two grand" -> "$2000"
   s = s.replace(/\b(one|two|three|four|five|six|seven|eight|nine|ten|a|\d+(?:\.\d+)?)\s+grand\b/gi, (_, w) => '$' + Math.round((WORDS[w.toLowerCase()] ?? parseFloat(w)) * 1000));
+  // "$1.5 million" -> "$1500000"
+  s = s.replace(/(\d+(?:\.\d+)?)\s*(?:million|mil|m)\b/gi, (_, n) => String(Math.round(parseFloat(n) * 1e6)));
+  // 預算五萬 / 十五萬 / 兩萬 -> 預算 50000
+  s = s.replace(/([一二兩三四五六七八九十]{1,3})\s*(萬|万|千)/g, (_, w, u) => String(zhNum(w) * (u === '千' ? 1000 : 10000)) + ' 元');
   let currency = null;
   if (/NT\$|NTD|TWD|新台幣|台幣|元|萬|万/.test(s)) currency = 'TWD';
   if (/US\$|USD|\$|dollars?/i.test(s) && !/NT\$/.test(s)) currency = currency === 'TWD' && /萬|元/.test(s) ? 'TWD' : 'USD';

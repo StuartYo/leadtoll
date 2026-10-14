@@ -15,7 +15,7 @@
   --mark: #fff0b3;
   --mark-on: #ffd54a;
   --radius: 16px;
-  --sans: 'Inter Tight', 'Noto Sans TC', system-ui, sans-serif;
+  --sans: 'Inter Tight', system-ui, -apple-system, 'Segoe UI', 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, monospace;
 }
 @media (prefers-color-scheme: dark) {
@@ -37,7 +37,7 @@
   }
 }
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 72px; }
 body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 var(--sans); }
 a { color: inherit; }
 .wrap { max-width: 1160px; margin: 0 auto; padding: 0 16px; }
@@ -69,7 +69,9 @@ a { color: inherit; }
 .bar i { display: block; height: 100%; background: var(--accent); transition: width .3s; }
 
 .grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 20px; align-items: start; }
-@media (max-width: 880px) { .grid { grid-template-columns: 1fr; } }
+@media (max-width: 880px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+.card { min-width: 0; }
+.examples { max-width: 100%; }
 .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
 .card-h { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
 h2 { font-size: 15px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); margin: 0; font-weight: 700; }

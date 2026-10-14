@@ -1,6 +1,13 @@
+import '@fontsource/inter-tight/latin-400.css';
+import '@fontsource/inter-tight/latin-500.css';
+import '@fontsource/inter-tight/latin-600.css';
+import '@fontsource/inter-tight/latin-700.css';
+import '@fontsource/inter-tight/latin-800.css';
+import '@fontsource/jetbrains-mono/latin-400.css';
+import '@fontsource/jetbrains-mono/latin-600.css';
 import { triage, parseJSON } from './core/pipeline.js';
 import { DEFAULT_PROFILE } from './core/profile.js';
-import { FLAGS } from './core/catalog.js';
+import { FLAGS, COMPONENTS } from './core/catalog.js';
 import { fmt, pct } from './core/decide.js';
 import { locate } from './core/verify.js';
 import { extractPrompt, draftPrompt, EXTRACT_GRAMMAR } from './core/prompts.js';
@@ -82,6 +89,7 @@ function setMode(m) {
     state.raw = null;
     state.draftText = '';
     state.feeTouched = false;
+    if (RECORDED.examples.some((e) => e.post === $('post').value)) $('post').value = '';
     $('fee').value = '';
     $('feeCur').value = 'USD';
     render();
@@ -215,7 +223,7 @@ function render() {
   // dropped
   const drops = t.dropped.filter((x) => x.quote);
   $('dropped').innerHTML = drops.length
-    ? `<h3>Thrown out by the checker (${drops.length})</h3>` + drops.map((x) => `<div class="drop"><s>${esc(labelFor(x))}: "${esc(x.quote)}"</s><em>${esc(x.why || 'quote is not in the post')}</em></div>`).join('')
+    ? `<h3>Thrown out by the checker (${drops.length})</h3>` + drops.map((x) => `<div class="drop"><s>${esc(labelFor(x))}, quoting "${esc(x.quote)}"</s><em>${esc(x.why || 'quote is not in the post')}</em></div>`).join('')
     : `<h3>Thrown out by the checker</h3><p class="fine" style="margin:0">Nothing. Every quote Gemma gave is in the post.</p>`;
 
   // estimate
@@ -227,7 +235,7 @@ function render() {
   if (state.draftText && d.verdict !== 'SKIP') {
     const f = finishDraft(state.draftText, state.post, d);
     $('draft').innerHTML = `<div class="draft-h"><h3 style="margin:0">Draft opener</h3><button class="btn ghost" id="copy" type="button">${ICON.copy}<span>Copy</span></button></div><div class="draftbox">${esc(f.text)}</div>` +
-      `<p class="fine">Written by Gemma. Price and days were filled in by code${f.removed.length ? `; ${f.removed.length} sentence with a number the model made up was removed` : ''}.</p>`;
+      `<p class="fine">Written by Gemma. Price and days were filled in by code.${f.removed.map((r) => ` Removed one sentence: ${esc(r.why)}.`).join('')}</p>`;
     $('copy').onclick = () => navigator.clipboard?.writeText(f.text).then(() => { $('copy').lastChild.textContent = 'Copied'; });
   } else $('draft').innerHTML = '';
 
@@ -241,9 +249,9 @@ function budgetText(b) {
   return b.per === 'hour' ? `${r} an hour${b.hours ? `, ${b.hours} hours` : ''}` : r;
 }
 function labelFor(x) {
-  if (x.kind === 'flag') return FLAGS[x.type]?.label || x.type || 'flag';
-  if (x.kind === 'component') return 'work item';
-  return x.kind;
+  if (x.kind === 'flag') return `Gemma said "${FLAGS[x.type]?.label || x.type || 'warning'}"`;
+  if (x.kind === 'component') return `Gemma said "${COMPONENTS[x.type]?.label || x.type || 'work item'}"`;
+  return 'Gemma said "budget"';
 }
 
 function renderPost(quotes) {

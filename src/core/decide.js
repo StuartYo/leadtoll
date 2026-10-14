@@ -101,17 +101,24 @@ export function decide(facts, lead, profileIn) {
   for (const f of facts.flags.filter((f) => !FLAGS[f.type]?.hard)) {
     reasons.push({ kind: 'soft', text: FLAGS[f.type]?.label || f.type, quote: f.quote });
   }
+  // Suggested price: what the work costs at 1.25x your floor, raised to the middle of the client's
+  // stated range when that is higher, and never above the top of the range.
   const step = cur === 'TWD' ? 1000 : 10;
-  const quote = Math.max(profile.minProject, Math.ceil((est.mid * profile.floorRate * 1.25) / step) * step);
+  let quote = Math.max(profile.minProject, est.mid * profile.floorRate * 1.25);
+  if (b && b.per !== 'hour') {
+    const lo = convert(b.min ?? b.max, b.currency, cur), hi = convert(b.max ?? b.min, b.currency, cur);
+    if (lo != null && hi != null) quote = Math.min(hi, Math.max(quote, (lo + hi) / 2));
+  }
+  quote = Math.ceil(quote / step) * step;
   return { verdict, reasons, est, value, valueNote, workCost, surplus, bidCost, leadCost, breakEven, suggestedQuote: quote, currency: cur };
 }
 
 export function fmt(v, cur) {
   if (v == null || !isFinite(v)) return 'n/a';
   const r = Math.round(v);
-  return (cur === 'TWD' ? 'NT$' : '$') + r.toLocaleString('en-US');
+  return (r < 0 ? '-' : '') + (cur === 'TWD' ? 'NT$' : '$') + Math.abs(r).toLocaleString('en-US');
 }
 export function pct(x) {
   if (x == null || !isFinite(x)) return 'n/a';
-  return x < 0.01 ? (x * 100).toFixed(1) + '%' : Math.round(x * 100) + '%';
+  return x < 0.1 ? (x * 100).toFixed(1).replace(/\.0$/, '') + '%' : Math.round(x * 100) + '%';
 }
