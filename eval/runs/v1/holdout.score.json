@@ -1,0 +1,192 @@
+{
+ "summary": {
+  "run": "eval/runs/holdout.json",
+  "model": "gemma-4-E2B-it-q4f16_1-MLC",
+  "n": 12,
+  "arms": {
+   "baseline": {
+    "verdict_accuracy": "5/12 (42%)",
+    "hard_no_caught": "2/3",
+    "paid_on_hard_no": 1,
+    "budget_read_correctly": "6/12",
+    "quotes_not_in_post": "8/39 (21%)",
+    "json_parse_fail": 0
+   },
+   "rules_only": {
+    "verdict_accuracy": "8/12 (67%)",
+    "hard_no_caught": "1/3",
+    "paid_on_hard_no": 2,
+    "budget_read_correctly": "9/12"
+   },
+   "model_unverified": {
+    "verdict_accuracy": "7/12 (58%)",
+    "hard_no_caught": "2/3",
+    "paid_on_hard_no": 0,
+    "budget_read_correctly": "2/12"
+   },
+   "leadtoll": {
+    "verdict_accuracy": "6/12 (50%)",
+    "hard_no_caught": "2/3",
+    "paid_on_hard_no": 1,
+    "budget_read_correctly": "9/12"
+   }
+  },
+  "reader": {
+   "claims": 36,
+   "dropped_by_verifier": "6/36 (17%)",
+   "dropped_why": {
+    "quote is real but does not say that": 1,
+    "no quote given": 5
+   },
+   "json_parse_fail": 0,
+   "median_extract_ms": 11969
+  }
+ },
+ "rows": [
+  {
+   "id": "hold-01",
+   "gold": "PAY",
+   "baseline": "PAY",
+   "rules_only": "PAY",
+   "leadtoll": "PAY",
+   "dropped": [
+    "flag:pay_on_success:paid on the 1st"
+   ],
+   "flags": [],
+   "budget": "900-900 USD"
+  },
+  {
+   "id": "hold-02",
+   "gold": "PAY",
+   "baseline": "PAY",
+   "rules_only": "CLOSE",
+   "leadtoll": "CLOSE",
+   "dropped": [],
+   "flags": [
+    "rush(model)"
+   ],
+   "budget": null
+  },
+  {
+   "id": "hold-03",
+   "gold": "SKIP",
+   "baseline": "SKIP",
+   "rules_only": "PAY",
+   "leadtoll": "SKIP",
+   "dropped": [],
+   "flags": [
+    "onsite(model)"
+   ],
+   "budget": "4000-5000 USD"
+  },
+  {
+   "id": "hold-04",
+   "gold": "PAY",
+   "baseline": "SKIP",
+   "rules_only": "PAY",
+   "leadtoll": "SKIP",
+   "dropped": [],
+   "flags": [
+    "rush(model)"
+   ],
+   "budget": "800-800 USD"
+  },
+  {
+   "id": "hold-05",
+   "gold": "SKIP",
+   "baseline": "PAY",
+   "rules_only": "SKIP",
+   "leadtoll": "SKIP",
+   "dropped": [],
+   "flags": [
+    "pay_on_success(model)"
+   ],
+   "budget": "150-150 USD"
+  },
+  {
+   "id": "hold-06",
+   "gold": "SKIP",
+   "baseline": "PAY",
+   "rules_only": "PAY",
+   "leadtoll": "PAY",
+   "dropped": [
+    "component:page:",
+    "component:login:",
+    "component:admin_dashboard:",
+    "component:integration:",
+    "flag:unpaid_work:"
+   ],
+   "flags": [],
+   "budget": "3000-3000 USD"
+  },
+  {
+   "id": "hold-07",
+   "gold": "CLOSE",
+   "baseline": "PAY",
+   "rules_only": "CLOSE",
+   "leadtoll": "CLOSE",
+   "dropped": [],
+   "flags": [],
+   "budget": null
+  },
+  {
+   "id": "hold-08",
+   "gold": "CLOSE",
+   "baseline": "PAY",
+   "rules_only": "CLOSE",
+   "leadtoll": "SKIP",
+   "dropped": [],
+   "flags": [
+    "rush(model)"
+   ],
+   "budget": "500-700 USD"
+  },
+  {
+   "id": "hold-09",
+   "gold": "SKIP",
+   "baseline": "PAY",
+   "rules_only": "SKIP",
+   "leadtoll": "SKIP",
+   "dropped": [],
+   "flags": [],
+   "budget": "1500-1500 USD"
+  },
+  {
+   "id": "hold-10",
+   "gold": "PAY",
+   "baseline": "PAY",
+   "rules_only": "SKIP",
+   "leadtoll": "SKIP",
+   "dropped": [],
+   "flags": [
+    "rush(model)",
+    "onsite(rule)"
+   ],
+   "budget": "3-3 USD"
+  },
+  {
+   "id": "hold-11",
+   "gold": "SKIP",
+   "baseline": "SKIP",
+   "rules_only": "SKIP",
+   "leadtoll": "SKIP",
+   "dropped": [],
+   "flags": [
+    "tos_grey(model)"
+   ],
+   "budget": "2-2 USD"
+  },
+  {
+   "id": "hold-12",
+   "gold": "CLOSE",
+   "baseline": "PAY",
+   "rules_only": "CLOSE",
+   "leadtoll": "SKIP",
+   "dropped": [],
+   "flags": [
+    "vague_scope(model)"
+   ],
+   "budget": null
+  }
+ ]
+}

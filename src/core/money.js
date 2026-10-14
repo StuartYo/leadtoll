@@ -26,15 +26,19 @@ function num(s) {
  * Returns { min, max, currency, per } or null.
  * Handles: "$1,200", "US$ 500-800", "2k", "$15-20/hr", "預算 3–5 萬", "10~15萬", "3 萬以下", "NT$30,000".
  */
+const WORDS = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, a: 1 };
+
 export function parseMoney(text) {
   if (!text) return null;
-  const s = String(text).normalize('NFKC');
+  let s = String(text).normalize('NFKC');
+  // "two grand" -> "$2000"
+  s = s.replace(/\b(one|two|three|four|five|six|seven|eight|nine|ten|a|\d+(?:\.\d+)?)\s+grand\b/gi, (_, w) => '$' + Math.round((WORDS[w.toLowerCase()] ?? parseFloat(w)) * 1000));
   let currency = null;
   if (/NT\$|NTD|TWD|新台幣|台幣|元|萬|万/.test(s)) currency = 'TWD';
   if (/US\$|USD|\$|dollars?/i.test(s) && !/NT\$/.test(s)) currency = currency === 'TWD' && /萬|元/.test(s) ? 'TWD' : 'USD';
   const per = /\/\s*h(ou)?r|per hour|an hour|hourly|時薪|每小時/i.test(s) ? 'hour' : 'project';
 
-  const range = /(\d[\d,]*(?:\.\d+)?\s*[kK]?)\s*(?:-|–|—|~|～|to|至|到)\s*\$?\s*(\d[\d,]*(?:\.\d+)?\s*[kK]?)/;
+  const range = /(\d[\d,]*(?:\.\d+)?\s*[kK]?)\s*(?:萬|万)?\s*(?:-|–|—|~|～|to|至|到)\s*\$?\s*(\d[\d,]*(?:\.\d+)?\s*[kK]?)/;
   const single = /(\d[\d,]*(?:\.\d+)?\s*[kK]?)/;
   // Only look at numbers attached to a money marker or the word budget, to avoid "5,000 users".
   const anchored = new RegExp(
@@ -54,6 +58,11 @@ export function parseMoney(text) {
   if (lo == null) return null;
   lo *= mult;
   if (hi != null) hi *= mult;
+  // "2k" where the k was matched by the unit part of the pattern rather than the number.
+  if (mult === 1 && /\d\s*[kK]\b/.test(m[0])) {
+    if (lo < 1000) lo *= 1000;
+    if (hi != null && hi < 1000) hi *= 1000;
+  }
   let min = lo, max = hi ?? lo;
   if (hi == null) {
     if (/以下|以內|under|below|up to|max|最多|at most|or less/i.test(s)) min = null;

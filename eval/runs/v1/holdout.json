@@ -1,0 +1,427 @@
+{
+ "results": [
+  {
+   "id": "hold-01",
+   "extract": {
+    "text": "```json\n{\n  \"budget\": \"$900 per month\",\n  \"flags\": [\n    {\n      \"type\": \"pay_on_success\",\n      \"quote\": \"paid on the 1st\"\n    }\n  ],\n  \"integration\": [\n    {\n      \"type\": \"integration\",\n      \"quote\": \"bug fixes, a couple of new charts per month, keeping dependencies from rotting, and answering the occasional \\\"why is this number wrong\\\" question from the sales team\"\n    }\n  ]\n}\n```",
+    "ms": 7897,
+    "usage": {
+     "completion_tokens": 123,
+     "prompt_tokens": 660,
+     "total_tokens": 783,
+     "extra": {
+      "e2e_latency_s": 7.897,
+      "prefill_tokens_per_s": 260.797407831902,
+      "decode_tokens_per_s": 22.900046926277632,
+      "time_to_first_token_s": 2.5306999999992548,
+      "time_per_output_token_s": 0.04366803278697685
+     }
+    }
+   },
+   "baseline": {
+    "text": "```json\n{\n  \"verdict\": \"PAY\",\n  \"budget_min\": 900,\n  \"budget_max\": null,\n  \"currency\": \"USD\",\n  \"reasons\": [\n    {\n      \"reason\": \"The job aligns perfectly with my core skills (Next.js frontend, Node API, Postgres) and maintenance work.\",\n      \"quote\": \"Looking for an ongoing maintenance developer for our internal sales dashboard (Next.js front end, a small Node API, Postgres).\"\n    },\n    {\n      \"reason\": \"The estimated time commitment is manageable within my service structure.\",\n      \"quote\": \"I'd estimate 12-15 hours a month.\"\n    },\n    {\n      \"reason\": \"The budget is sufficient given the estimated hours.\",\n      \"quote\": \"Budget is $900 per month\"\n    },\n    {\n      \"reason\": \"The work is remote and involves standard maintenance/bug fixing, which is a good fit.\",\n      \"quote\": \"Everything is remote, we meet on a video call every other Thursday for 30 minutes.\"\n    }\n  ]\n}\n```",
+    "ms": 12152,
+    "usage": {
+     "completion_tokens": 257,
+     "prompt_tokens": 496,
+     "total_tokens": 753,
+     "extra": {
+      "e2e_latency_s": 12.152,
+      "prefill_tokens_per_s": 350.4062168844931,
+      "decode_tokens_per_s": 24.013432513830896,
+      "time_to_first_token_s": 1.4155,
+      "time_per_output_token_s": 0.04164335937496795
+     }
+    }
+   }
+  },
+  {
+   "id": "hold-02",
+   "extract": {
+    "text": "```json\n{\n  \"component_counts\": {\n    \"page\": 2,\n    \"login\": 0,\n    \"admin_dashboard\": 0,\n    \"integration\": 0\n  },\n  \"flags\": [\n    {\n      \"type\": \"rush\",\n      \"quote\": \"live in six to eight weeks\"\n    }\n  ]\n}\n```",
+    "ms": 5604,
+    "usage": {
+     "completion_tokens": 89,
+     "prompt_tokens": 618,
+     "total_tokens": 707,
+     "extra": {
+      "e2e_latency_s": 5.604,
+      "prefill_tokens_per_s": 318.03211198036075,
+      "decode_tokens_per_s": 24.13670150020198,
+      "time_to_first_token_s": 1.9431999999992549,
+      "time_per_output_token_s": 0.041430681818376544
+     }
+    }
+   },
+   "baseline": {
+    "text": "```json\n{\n  \"verdict\": \"PAY\",\n  \"budget_min\": 550,\n  \"budget_max\": 2000,\n  \"currency\": \"USD\",\n  \"reasons\": [\n    {\n      \"reason\": \"The project aligns perfectly with the freelancer's core skills (marketing sites, booking flows, admin dashboards).\",\n      \"quote\": \"I build: marketing sites, multi-page sites with a CMS, web apps with login, admin dashboards, booking flows, LINE/Telegram bots, small business tools, API integrations.\"\n    },\n    {\n      \"reason\": \"The budget requested ($2000) is well above the minimum project floor rate ($550).\",\n      \"quote\": \"My minimum project is 550 USD\"\n    },\n    {\n      \"reason\": \"The project is simple enough to be completed quickly, minimizing the time investment.\",\n      \"quote\": \"Bidding on this job costs me 35 USD\"\n    }\n  ]\n}\n```",
+    "ms": 10694,
+    "usage": {
+     "completion_tokens": 234,
+     "prompt_tokens": 453,
+     "total_tokens": 687,
+     "extra": {
+      "e2e_latency_s": 10.694,
+      "prefill_tokens_per_s": 354.3214704732108,
+      "decode_tokens_per_s": 24.891300864273415,
+      "time_to_first_token_s": 1.2785,
+      "time_per_output_token_s": 0.04017467811155278
+     }
+    }
+   }
+  },
+  {
+   "id": "hold-03",
+   "extract": {
+    "text": "```json\n{\n  \"budget\": \"$4,000 to $5,000\",\n  \"flags\": [\n    {\n      \"type\": \"onsite\",\n      \"quote\": \"The developer must be local to Denver because we want you to come by the office a few times to sit with the dispatchers and watch how they work, maybe once a month at first.\"\n    }\n  ],\n  \"integration\": [\n    {\n      \"type\": \"payment_gateway\",\n      \"quote\": \"request a visit and pay invoices online.\"\n    }\n  ],\n  \"page\": [\n    {\n      \"type\": \"customer_portal\",\n      \"quote\": \"need a customer portal where clients can see their service history, request a visit and pay invoices online.\"\n    }\n  ],\n  \"erp_suite\": [\n    {\n      \"type\": \"dispatch_screen\",\n      \"quote\": \"We also want a simple admin screen for dispatchers.\"\n    }\n  ]\n}\n```",
+    "ms": 12018,
+    "usage": {
+     "completion_tokens": 230,
+     "prompt_tokens": 630,
+     "total_tokens": 860,
+     "extra": {
+      "e2e_latency_s": 12.018,
+      "prefill_tokens_per_s": 316.37623662921925,
+      "decode_tokens_per_s": 22.99473832191886,
+      "time_to_first_token_s": 1.991300000000745,
+      "time_per_output_token_s": 0.04348820960692508
+     }
+    }
+   },
+   "baseline": {
+    "text": "```json\n{\n  \"verdict\": \"SKIP\",\n  \"budget_min\": 4000,\n  \"budget_max\": 5000,\n  \"currency\": \"USD\",\n  \"reasons\": [\n    {\n      \"reason\": \"Must be on site\",\n      \"quote\": \"The developer must be local to Denver because they want you to come by the office a few times to sit with the dispatchers and watch how they work, maybe once a month at first.\"\n    },\n    {\n      \"reason\": \"Local requirement\",\n      \"quote\": \"The developer must be local to Denver because they want you to come by the office a few times to sit with the dispatchers and watch how they work, maybe once a month at first.\"\n    }\n  ]\n}\n```",
+    "ms": 9342,
+    "usage": {
+     "completion_tokens": 182,
+     "prompt_tokens": 465,
+     "total_tokens": 647,
+     "extra": {
+      "e2e_latency_s": 9.341,
+      "prefill_tokens_per_s": 358.4367532565582,
+      "decode_tokens_per_s": 22.641981486114588,
+      "time_to_first_token_s": 1.297300000000745,
+      "time_per_output_token_s": 0.044165745856353585
+     }
+    }
+   }
+  },
+  {
+   "id": "hold-04",
+   "extract": {
+    "text": "```json\n{\n  \"flags\": [\n    {\n      \"type\": \"rush\",\n      \"quote\": \"Fixed price $800.\"\n    }\n  ],\n  \"component\": [\n    {\n      \"type\": \"page\",\n      \"count\": 40,\n      \"quote\": \"collects product names, prices and stock status from about 40 pages of a public online hardware store.\"\n    },\n    {\n      \"type\": \"integration\",\n      \"quote\": \"I want the data written to a Google Sheet once a day\"\n    }\n  ]\n}\n```",
+    "ms": 8071,
+    "usage": {
+     "completion_tokens": 138,
+     "prompt_tokens": 640,
+     "total_tokens": 778,
+     "extra": {
+      "e2e_latency_s": 8.07,
+      "prefill_tokens_per_s": 318.70922762846095,
+      "decode_tokens_per_s": 22.72048824172991,
+      "time_to_first_token_s": 2.0080999999977647,
+      "time_per_output_token_s": 0.04401313868613684
+     }
+    }
+   },
+   "baseline": {
+    "text": "```json\n{\n  \"verdict\": \"SKIP\",\n  \"budget_min\": 550,\n  \"budget_max\": null,\n  \"currency\": \"USD\",\n  \"reasons\": [\n    {\n      \"reason\": \"The job requires scraping public data from a hardware store, which is a task I have not explicitly built or specialized in, and the complexity is low enough that it might be better suited for a simpler tool or a less specialized developer.\",\n      \"quote\": \"I need a script that collects product names, prices and stock status from about 40 pages of a public online hardware store.\"\n    },\n    {\n      \"reason\": \"The core requirement is data collection and alerting, which can likely be solved with standard web scraping libraries (like Selenium or Requests) in Python/Node, which I can use, but the fixed price of $800 is disproportionate to the scope described.\",\n      \"quote\": \"Python or Node is fine, you choose.\"\n    },\n    {\n      \"reason\": \"The concern about layout changes is a good point for discussion, but the overall nature of the job leans towards a simple data extraction task rather than complex application building.\",\n      \"quote\": \"Please tell me in your proposal how you would handle the site changing its layout.\"\n    }\n  ]\n}\n```",
+    "ms": 29838,
+    "usage": {
+     "completion_tokens": 292,
+     "prompt_tokens": 476,
+     "total_tokens": 768,
+     "extra": {
+      "e2e_latency_s": 29.837,
+      "prefill_tokens_per_s": 356.58101730407,
+      "decode_tokens_per_s": 10.292869269954496,
+      "time_to_first_token_s": 1.334900000002235,
+      "time_per_output_token_s": 0.09715463917520648
+     }
+    }
+   }
+  },
+  {
+   "id": "hold-05",
+   "extract": {
+    "text": "```json\n{\n  \"flags\": [\n    {\n      \"type\": \"pay_on_success\",\n      \"quote\": \"paid when you deliver the first working version\"\n    }\n  ],\n  \"component\": [\n    {\n      \"type\": \"login\",\n      \"count\": 1,\n      \"quote\": \"MVP with sign up\"\n    },\n    {\n      \"type\": \"page\",\n      \"count\": 1,\n      \"quote\": \"listings\"\n    },\n    {\n      \"type\": \"page\",\n      \"count\": 1,\n      \"quote\": \"search\"\n    },\n    {\n      \"type\": \"page\",\n      \"count\": 1,\n      \"quote\": \"messaging\"\n    },\n    {\n      \"type\": \"page\",\n      \"count\": 1,\n      \"quote\": \"booking\"\n    },\n    {\n      \"type\": \"page\",\n      \"count\": 1,\n      \"quote\": \"reviews\"\n    }\n  ]\n}\n```",
+    "ms": 25868,
+    "usage": {
+     "completion_tokens": 243,
+     "prompt_tokens": 631,
+     "total_tokens": 874,
+     "extra": {
+      "e2e_latency_s": 25.867,
+      "prefill_tokens_per_s": 291.3742149984537,
+      "decode_tokens_per_s": 10.270557029179349,
+      "time_to_first_token_s": 2.165599999997765,
+      "time_per_output_token_s": 0.09736570247932338
+     }
+    }
+   },
+   "baseline": {
+    "text": "```json\n{\n  \"verdict\": \"PAY\",\n  \"budget_min\": 550,\n  \"budget_max\": null,\n  \"currency\": \"USD\",\n  \"reasons\": [\n    {\n      \"reason\": \"The project aligns well with solo web developer expertise (multi-page sites with CMS, booking flows, user management).\",\n      \"quote\": \"I need an MVP with sign up, listings, search, messaging, booking and reviews.\"\n    },\n    {\n      \"reason\": \"The minimum project value is met, as the fixed offer is $150, which is less than the minimum project floor rate of $550, but the win rate (10% of paid bids) suggests the cost is justified if the potential return is high.\",\n      \"quote\": \"I can offer you $150 fixed to get started, paid when you deliver the first working version, plus 10% of all revenue the platform makes for the first two years once we start charging.\"\n    },\n    {\n      \"reason\": \"The client expresses belief in the idea, which is a positive factor for engagement.\",\n      \"quote\": \"I think this will be big and you would be getting in early.\"\n    }\n  ]\n}\n```",
+    "ms": 30802,
+    "usage": {
+     "completion_tokens": 282,
+     "prompt_tokens": 465,
+     "total_tokens": 747,
+     "extra": {
+      "e2e_latency_s": 30.802,
+      "prefill_tokens_per_s": 322.26765541567653,
+      "decode_tokens_per_s": 9.630279518023187,
+      "time_to_first_token_s": 1.4429000000022352,
+      "time_per_output_token_s": 0.1038391459072904
+     }
+    }
+   }
+  },
+  {
+   "id": "hold-06",
+   "extract": {
+    "text": "```json\n{\n  \"components\": {\n    \"page\": 2,\n    \"login\": 1,\n    \"admin_dashboard\": 1,\n    \"integration\": 1\n  },\n  \"flags\": {\n    \"unpaid_work\": 1\n  }\n}\n```",
+    "ms": 8590,
+    "usage": {
+     "completion_tokens": 70,
+     "prompt_tokens": 696,
+     "total_tokens": 766,
+     "extra": {
+      "e2e_latency_s": 8.589,
+      "prefill_tokens_per_s": 234.11483736401382,
+      "decode_tokens_per_s": 12.350319497440164,
+      "time_to_first_token_s": 2.972900000002235,
+      "time_per_output_token_s": 0.08096956521709975
+     }
+    }
+   },
+   "baseline": {
+    "text": "```json\n{\n  \"verdict\": \"PAY\",\n  \"budget_min\": 550,\n  \"budget_max\": 3000,\n  \"currency\": \"USD\",\n  \"reasons\": [\n    {\n      \"reason\": \"The project scope aligns well with the developer's expertise (user authentication, data submission, admin views, notifications, and CSV export are common features).\",\n      \"quote\": \"Users log in, submit feature requests, vote on others, and our team marks items as planned, in progress or shipped. We also need an admin view with filters and CSV export, and Slack notifications on new requests.\"\n    },\n    {\n      \"reason\": \"The proposed stack (React/Postgres) is within the developer's comfort zone, and the timeline (six weeks) is manageable.\",\n      \"quote\": \"Stack is open but we lean toward React and Postgres.\"\n    },\n    {\n      \"reason\": \"The budget ($3,000) is sufficient for a project of this nature, considering the developer's rate.\",\n      \"quote\": \"Timeline is about six weeks and we have a budget of $3,000 for the full build, with milestone payments.\"\n    },\n    {\n      \"reason\": \"The requirement for a working prototype on the staging server is an acceptable cost for shortlisting, as it is unpaid.\",\n      \"quote\": \"every finalist will build a small working prototype of the login and voting screen on their staging server, around 3 to 4 hours of work. It is unpaid, but the winner gets the full project.\"\n    }\n  ]\n}\n```",
+    "ms": 26290,
+    "usage": {
+     "completion_tokens": 362,
+     "prompt_tokens": 532,
+     "total_tokens": 894,
+     "extra": {
+      "e2e_latency_s": 26.289,
+      "prefill_tokens_per_s": 312.959585858266,
+      "decode_tokens_per_s": 14.762652533786353,
+      "time_to_first_token_s": 1.6998999999985098,
+      "time_per_output_token_s": 0.0677385041550875
+     }
+    }
+   }
+  },
+  {
+   "id": "hold-07",
+   "extract": {
+    "text": "```json\n{\n  \"components\": [\n    {\n      \"type\": \"page\",\n      \"count\": 3,\n      \"quote\": \"maybe a few pages about me, maybe a blog, maybe a way to book calls\"\n    }\n  ],\n  \"flags\": []\n}\n```",
+    "ms": 7544,
+    "usage": {
+     "completion_tokens": 70,
+     "prompt_tokens": 607,
+     "total_tokens": 677,
+     "extra": {
+      "e2e_latency_s": 7.544,
+      "prefill_tokens_per_s": 296.603957977034,
+      "decode_tokens_per_s": 12.589632711160302,
+      "time_to_first_token_s": 2.0465,
+      "time_per_output_token_s": 0.07943043478254391
+     }
+    }
+   },
+   "baseline": {
+    "text": "```json\n{\n  \"verdict\": \"PAY\",\n  \"budget_min\": 550,\n  \"budget_max\": null,\n  \"currency\": \"USD\",\n  \"reasons\": [\n    {\n      \"reason\": \"The client is open to discussion and seeking suggestions on what they need, which aligns with building a custom website (marketing sites, multi-page sites) and potentially a booking flow.\",\n      \"quote\": \"Not sure yet what I need exactly, maybe a few pages about me, maybe a blog, maybe a way to book calls, maybe a course later?\"\n    },\n    {\n      \"reason\": \"The scope is flexible enough to start small (a few pages) and build up later, which is suitable for a custom build.\",\n      \"quote\": \"maybe a few pages about me, maybe a blog, maybe a way to book calls, maybe a course later?\"\n    },\n    {\n      \"reason\": \"The client is open to discussing costs and suggestions, which is a good starting point for a paid service.\",\n      \"quote\": \"I do not have a budget in mind, I would like to hear what people suggest and what it costs.\"\n    }\n  ]\n}\n```",
+    "ms": 22935,
+    "usage": {
+     "completion_tokens": 270,
+     "prompt_tokens": 442,
+     "total_tokens": 712,
+     "extra": {
+      "e2e_latency_s": 22.934,
+      "prefill_tokens_per_s": 350.84934116505684,
+      "decode_tokens_per_s": 12.483930999605308,
+      "time_to_first_token_s": 1.259800000000745,
+      "time_per_output_token_s": 0.08010297397763701
+     }
+    }
+   }
+  },
+  {
+   "id": "hold-08",
+   "extract": {
+    "text": "```json\n{\n  \"budget\": \"$500 to $700\",\n  \"flags\": [\n    {\n      \"type\": \"rush\",\n      \"quote\": \"we would like to launch before the end of next quarter.\"\n    }\n  ],\n  \"components\": [\n    {\n      \"type\": \"page\",\n      \"count\": 5,\n      \"quote\": \"a new 5 page website\"\n    },\n    {\n      \"type\": \"cms\",\n      \"count\": 1,\n      \"quote\": \"with a CMS so the office manager can update hours, staff bios and a news section herself.\"\n    },\n    {\n      \"type\": \"integration\",\n      \"count\": 1,\n      \"quote\": \"patients to request appointments online (just a form that emails the front desk is OK for now).\"\n    }\n  ]\n}\n```",
+    "ms": 17517,
+    "usage": {
+     "completion_tokens": 203,
+     "prompt_tokens": 622,
+     "total_tokens": 825,
+     "extra": {
+      "e2e_latency_s": 17.517,
+      "prefill_tokens_per_s": 306.91799072315337,
+      "decode_tokens_per_s": 13.098681053602105,
+      "time_to_first_token_s": 2.02660000000149,
+      "time_per_output_token_s": 0.07634356435642828
+     }
+    }
+   },
+   "baseline": {
+    "text": "```json\n{\n  \"verdict\": \"PAY\",\n  \"budget_min\": 550,\n  \"budget_max\": 700,\n  \"currency\": \"USD\",\n  \"reasons\": [\n    {\n      \"reason\": \"The project aligns perfectly with the freelancer's core skills (marketing sites, multi-page sites with a CMS).\",\n      \"quote\": \"We are a small dental practice and want a new 5 page website with a CMS so the office manager can update hours, staff bios and a news section herself.\"\n    },\n    {\n      \"reason\": \"The required features (CMS for updates, appointment request form) are within the freelancer's expertise.\",\n      \"quote\": \"We would also like patients to request appointments online (just a form that emails the front desk is OK for now).\"\n    },\n    {\n      \"reason\": \"The budget range ($500 to $700) is sufficient to cover the minimum required service, and the project is not urgent.\",\n      \"quote\": \"Their budget is $500 to $700, we know it may not be enough for everything so tell us what you can do for that.\"\n    },\n    {\n      \"reason\": \"The project can be handled remotely via video call, which is acceptable.\",\n      \"quote\": \"Everything can be done by video call, we only need the site.\"\n    }\n  ]\n}\n```",
+    "ms": 26123,
+    "usage": {
+     "completion_tokens": 321,
+     "prompt_tokens": 457,
+     "total_tokens": 778,
+     "extra": {
+      "e2e_latency_s": 26.123,
+      "prefill_tokens_per_s": 339.2724573125464,
+      "decode_tokens_per_s": 12.9890688867221,
+      "time_to_first_token_s": 1.347,
+      "time_per_output_token_s": 0.07698781249995806
+     }
+    }
+   }
+  },
+  {
+   "id": "hold-09",
+   "extract": {
+    "text": "```json\n{\n  \"components\": [\n    {\n      \"type\": \"shopify_theme\",\n      \"count\": 1,\n      \"quote\": \"We run a small skincare shop on Shopify and want our theme customised.\"\n    },\n    {\n      \"type\": \"page\",\n      \"count\": 1,\n      \"quote\": \"edit the Liquid templates for the product page\"\n    },\n    {\n      \"type\": \"page\",\n      \"count\": 1,\n      \"quote\": \"add a \\\"build your own bundle\\\" block with a live price\"\n    },\n    {\n      \"type\": \"page\",\n      \"count\": 1,\n      \"quote\": \"change the cart drawer\"\n    },\n    {\n      \"type\": \"page\",\n      \"count\": 1,\n      \"quote\": \"add a metafield-driven ingredients tab\"\n    }\n  ],\n  \"pay_on_success\": true\n}\n```",
+    "ms": 18975,
+    "usage": {
+     "completion_tokens": 221,
+     "prompt_tokens": 609,
+     "total_tokens": 830,
+     "extra": {
+      "e2e_latency_s": 18.975,
+      "prefill_tokens_per_s": 298.60259867614616,
+      "decode_tokens_per_s": 13.05119032787053,
+      "time_to_first_token_s": 2.0395,
+      "time_per_output_token_s": 0.076621363636428
+     }
+    }
+   },
+   "baseline": {
+    "text": "```json\n{\n  \"verdict\": \"PAY\",\n  \"budget_min\": 550,\n  \"budget_max\": null,\n  \"currency\": \"USD\",\n  \"reasons\": [\n    {\n      \"reason\": \"The job involves customizing Liquid templates, which is within the developer's stated skill set (building multi-page sites with a CMS/theme customization).\",\n      \"quote\": \"edit the Liquid templates for the product page (add a \\\"build your own bundle\\\" block with a live price), change the cart drawer, and add a metafield-driven ingredients tab.\"\n    },\n    {\n      \"reason\": \"The minimum project value ($1,500) is well above the minimum project floor rate ($550 USD).\",\n      \"quote\": \"$1,500 fixed, about two weeks.\"\n    },\n    {\n      \"reason\": \"The work is focused on theme customization/editing, not breaking platform rules or requiring on-site presence.\",\n      \"quote\": \"you would work in a duplicate of it.\"\n    }\n  ]\n}\n```",
+    "ms": 21830,
+    "usage": {
+     "completion_tokens": 247,
+     "prompt_tokens": 443,
+     "total_tokens": 690,
+     "extra": {
+      "e2e_latency_s": 21.83,
+      "prefill_tokens_per_s": 327.61425824509956,
+      "decode_tokens_per_s": 12.07836205626308,
+      "time_to_first_token_s": 1.3522000000029801,
+      "time_per_output_token_s": 0.08279268292685951
+     }
+    }
+   }
+  },
+  {
+   "id": "hold-10",
+   "extract": {
+    "text": "```json\n{\n  \"flags\": [\n    {\n      \"type\": \"rush\",\n      \"quote\": \"希望一個半月內可以上線。\"\n    }\n  ],\n  \"component_flags\": [\n    {\n      \"type\": \"integration\",\n      \"quote\": \"想做一個 LINE 訂位機器人。\"\n    },\n    {\n      \"type\": \"admin_dashboard\",\n      \"quote\": \"店長需要一個簡單的後台看當天訂位、可以手動關掉某個時段。\"\n    }\n  ]\n}\n```",
+    "ms": 11969,
+    "usage": {
+     "completion_tokens": 134,
+     "prompt_tokens": 642,
+     "total_tokens": 776,
+     "extra": {
+      "e2e_latency_s": 11.969,
+      "prefill_tokens_per_s": 302.444999293459,
+      "decode_tokens_per_s": 13.569628518628756,
+      "time_to_first_token_s": 2.122699999999255,
+      "time_per_output_token_s": 0.07369398496260769
+     }
+    }
+   },
+   "baseline": {
+    "text": "```json\n{\n  \"verdict\": \"PAY\",\n  \"budget_min\": 35000,\n  \"budget_max\": 45000,\n  \"currency\": \"TWD\",\n  \"reasons\": [\n    {\n      \"reason\": \"The job directly aligns with the builder's expertise in creating integrations and bots, specifically mentioning a LINE bot.\",\n      \"quote\": \"我們是台中一家有兩間分店的火鍋店，想做一個 LINE 訂位機器人。\"\n    },\n    {\n      \"reason\": \"The core functionality involves user interaction (selecting branch, date, party, time) and automated responses, which fits within the scope of building a functional system.\",\n      \"quote\": \"客人在 LINE 官方帳號點選分店、日期、人數和時段，系統確認還有位子後自動回覆訂位成功，前一天再提醒一次。\"\n    },\n    {\n      \"reason\": \"The requirement for a simple backend for staff to check reservations and manually close time slots is a standard feature for building a functional application.\",\n      \"quote\": \"店長需要一個簡單的後台看當天訂位、可以手動關掉某個時段。\"\n    },\n    {\n      \"reason\": \"The project is entirely online, which is preferred by the builder, and the post suggests ongoing online discussion.\",\n      \"quote\": \"全程線上討論就可以，不用到店裡。\"\n    }\n  ]\n}\n```",
+    "ms": 26332,
+    "usage": {
+     "completion_tokens": 333,
+     "prompt_tokens": 479,
+     "total_tokens": 812,
+     "extra": {
+      "e2e_latency_s": 26.332,
+      "prefill_tokens_per_s": 348.16106992276536,
+      "decode_tokens_per_s": 13.388500407295536,
+      "time_to_first_token_s": 1.375800000000745,
+      "time_per_output_token_s": 0.07469096385545086
+     }
+    }
+   }
+  },
+  {
+   "id": "hold-11",
+   "extract": {
+    "text": "```json\n{\n  \"component\": [\n    {\n      \"type\": \"maps_realtime\",\n      \"count\": 1,\n      \"quote\": \"想請人幫忙處理我們幾間民宿在 Google 地圖上的評價。\"\n    }\n  ],\n  \"flags\": [\n    {\n      \"type\": \"tos_grey\",\n      \"quote\": \"用不同的帳號和不同的 IP 分批貼上去，避免被平台判定是同一個人。\"\n    }\n  ]\n}\n```",
+    "ms": 11488,
+    "usage": {
+     "completion_tokens": 117,
+     "prompt_tokens": 623,
+     "total_tokens": 740,
+     "extra": {
+      "e2e_latency_s": 11.487,
+      "prefill_tokens_per_s": 236.08321649185334,
+      "decode_tokens_per_s": 13.182267577276978,
+      "time_to_first_token_s": 2.63889999999851,
+      "time_per_output_token_s": 0.07585948275877488
+     }
+    }
+   },
+   "baseline": {
+    "text": "```json\n{\n  \"verdict\": \"SKIP\",\n  \"budget_min\": 550,\n  \"budget_max\": null,\n  \"currency\": \"TWD\",\n  \"reasons\": [\n    {\n      \"reason\": \"The request involves creating fake reviews and manipulating platform ratings.\",\n      \"quote\": \"寫一批像真人的五星評論(每間大約 30 則，內容要有差異)，用不同的帳號和不同的 IP 分批貼上去，避免被平台判定是同一個人。\"\n    },\n    {\n      \"reason\": \"The request involves reporting negative reviews for removal.\",\n      \"quote\": \"最好也能幫忙把幾則負評檢舉到下架。\"\n    },\n    {\n      \"reason\": \"This directly violates the 'hard no' rule against breaking a platform's rules.\",\n      \"quote\": \"anything that breaks a platform's rules (multi-account, phone farms, fake reviews, dodging bans)\"\n    }\n  ]\n}\n```",
+    "ms": 17375,
+    "usage": {
+     "completion_tokens": 229,
+     "prompt_tokens": 459,
+     "total_tokens": 688,
+     "extra": {
+      "e2e_latency_s": 17.374,
+      "prefill_tokens_per_s": 338.57048019398906,
+      "decode_tokens_per_s": 14.309832989178,
+      "time_to_first_token_s": 1.3557000000029802,
+      "time_per_output_token_s": 0.06988201754389889
+     }
+    }
+   }
+  },
+  {
+   "id": "hold-12",
+   "extract": {
+    "text": "```json\n{\n  \"component\": [\n    {\n      \"type\": \"erp_suite\",\n      \"count\": 1,\n      \"quote\": \"想找人幫忙做一套小型的進銷存系統\"\n    }\n  ],\n  \"flags\": [\n    {\n      \"type\": \"vague_scope\",\n      \"quote\": \"目前還不確定要做到多完整，可能先做庫存跟出貨，之後再看要不要加報表跟客戶管理\"\n    }\n  ]\n}\n```",
+    "ms": 14394,
+    "usage": {
+     "completion_tokens": 124,
+     "prompt_tokens": 618,
+     "total_tokens": 742,
+     "extra": {
+      "e2e_latency_s": 14.393,
+      "prefill_tokens_per_s": 313.08576928946076,
+      "decode_tokens_per_s": 9.940277519643042,
+      "time_to_first_token_s": 1.9738999999985098,
+      "time_per_output_token_s": 0.1006008130078757
+     }
+    }
+   },
+   "baseline": {
+    "text": "```json\n{\n  \"verdict\": \"PAY\",\n  \"budget_min\": 550,\n  \"budget_max\": null,\n  \"currency\": \"USD\",\n  \"reasons\": [\n    {\n      \"reason\": \"The job involves building a small inventory and sales system, which aligns well with the solo web developer's expertise in building web apps and integrating data (like Excel/database concepts).\",\n      \"quote\": \"目前進貨、庫存跟出貨都在 Excel 上，常常對不起來。\"\n    },\n    {\n      \"reason\": \"The client is open to discussing features first, suggesting a phased approach (starting with inventory/shipping), which is suitable for a proposal/discovery phase.\",\n      \"quote\": \"有沒有人可以先跟我們聊聊需要哪些功能？目前還不確定要做到多完整，可能先做庫存跟出貨，之後再看要不要加報表跟客戶管理。\"\n    },\n    {\n      \"reason\": \"The client is asking for a rough estimate on time/scope before committing to a full plan, which is what a paid consultation/scoping service provides.\",\n      \"quote\": \"預算還沒抓，想先聽聽報價範圍再決定，也想知道大概要做多久。\"\n    }\n  ]\n}\n```",
+    "ms": 32472,
+    "usage": {
+     "completion_tokens": 292,
+     "prompt_tokens": 455,
+     "total_tokens": 747,
+     "extra": {
+      "e2e_latency_s": 32.471,
+      "prefill_tokens_per_s": 300.48870690808604,
+      "decode_tokens_per_s": 9.456802560821444,
+      "time_to_first_token_s": 1.514199999999255,
+      "time_per_output_token_s": 0.10574398625418031
+     }
+    }
+   }
+  }
+ ],
+ "model": "gemma-4-E2B-it-q4f16_1-MLC",
+ "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+ "at": "2026-10-14T16:08:27.273Z"
+}

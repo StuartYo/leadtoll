@@ -1,6 +1,6 @@
 import { quoteInPost } from './verify.js';
 import { parseMoney } from './money.js';
-import { ruleFlags, ruleNoGo, LABEL_WORDS } from './rules.js';
+import { ruleFlags, ruleNoGo, LABEL_WORDS, NEGATED_ONSITE } from './rules.js';
 import { COMPONENTS, FLAGS } from './catalog.js';
 import { decide } from './decide.js';
 
@@ -32,7 +32,7 @@ export function parseJSON(text) {
 }
 
 export function sentences(post) {
-  return String(post ?? '').normalize('NFKC').split(/(?<=[.!?。！？\n])\s*/).map((s) => s.trim()).filter(Boolean);
+  return String(post ?? '').normalize('NFKC').split(/(?<=[.!?。！？\n])(?!\d)\s*/).map((s) => s.trim()).filter(Boolean);
 }
 
 /**
@@ -52,10 +52,12 @@ export function verifyExtraction(raw, post, { useRules = true, useModel = true }
   // The quote is real, but does it say what the label says? Only checked for labels that end a lead.
   const fits = (kind, item) => {
     const re = LABEL_WORDS[item.type];
-    if (!re || re.test(String(item.quote).normalize('NFKC'))) return true;
+    const q = String(item.quote).normalize('NFKC');
+    const negated = item.type === 'onsite' && NEGATED_ONSITE.test(q);
+    if (!negated && (!re || re.test(q))) return true;
     const i = kept.lastIndexOf(kept.find((k) => k.quote === item.quote && k.type === item.type));
     if (i >= 0) kept.splice(i, 1);
-    dropped.push({ kind, ...item, why: 'quote is real but does not say that' });
+    dropped.push({ kind, ...item, why: negated ? 'quote says the opposite' : 'quote is real but does not say that' });
     return false;
   };
 

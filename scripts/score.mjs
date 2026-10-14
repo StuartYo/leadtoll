@@ -81,8 +81,8 @@ for (const r of run.results) {
       const m = parseMoney(fakeRaw.budget.quote);
       if (m) facts.budget = { ...m, per: fakeRaw.budget.per === 'hour' ? 'hour' : m.per };
     }
-    facts.components = (fakeRaw?.components || []).filter((c) => c && c.type);
-    facts.flags = (fakeRaw?.flags || []).filter((f) => f && f.type);
+    facts.components = (Array.isArray(fakeRaw?.components) ? fakeRaw.components : []).filter((c) => c && c.type);
+    facts.flags = (Array.isArray(fakeRaw?.flags) ? fakeRaw.flags : []).filter((f) => f && f.type);
     return facts;
   })();
   {

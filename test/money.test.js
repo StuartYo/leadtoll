@@ -19,3 +19,14 @@ describe('parseMoney', () => {
   it('picks budget not user count', () => expect(parseMoney('we have 5,000 users and a budget of $1,200')).toMatchObject({ min: 1200, max: 1200 }));
   it('converts', () => expect(Math.round(convert(100, 'USD', 'TWD'))).toBe(3150));
 });
+
+describe('parseMoney ranges with units on both ends', () => {
+  it('3.5 萬到 4.5 萬', () => expect(parseMoney('預算大概 3.5 萬到 4.5 萬')).toMatchObject({ min: 35000, max: 45000, currency: 'TWD' }));
+  it('$500 to $700', () => expect(parseMoney('Our budget is $500 to $700')).toMatchObject({ min: 500, max: 700, currency: 'USD' }));
+});
+
+describe('more money', () => {
+  it('around 2k', () => expect(parseMoney('around 2k for this, maybe a bit more')).toMatchObject({ min: 2000, max: 2000 }));
+  it('two grand', () => expect(parseMoney('Budget is about two grand, give or take')).toMatchObject({ min: 2000, max: 2000, currency: 'USD' }));
+  it('1.5k-2k', () => expect(parseMoney('budget 1.5k-2k')).toMatchObject({ min: 1500, max: 2000 }));
+});

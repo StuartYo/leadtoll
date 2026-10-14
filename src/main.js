@@ -3,7 +3,7 @@ import { DEFAULT_PROFILE } from './core/profile.js';
 import { FLAGS } from './core/catalog.js';
 import { fmt, pct } from './core/decide.js';
 import { locate } from './core/verify.js';
-import { extractPrompt, draftPrompt } from './core/prompts.js';
+import { extractPrompt, draftPrompt, EXTRACT_GRAMMAR } from './core/prompts.js';
 import { finishDraft } from './core/draft.js';
 import RECORDED from './recorded.json';
 
@@ -121,7 +121,7 @@ async function runLive() {
     state.post = post;
     state.lead = { amount: Number($('fee').value) || 0, currency: $('feeCur').value };
     status('<span class="dot busy"></span>Gemma is reading the post...');
-    const ex = await llm.ask(extractPrompt(post));
+    const ex = await llm.ask(extractPrompt(post), { grammar: EXTRACT_GRAMMAR });
     state.raw = parseJSON(ex.text) || {};
     state.draftText = '';
     render();

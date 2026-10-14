@@ -1,0 +1,423 @@
+{
+ "summary": {
+  "run": "eval/runs/dev.json",
+  "model": "gemma-4-E2B-it-q4f16_1-MLC",
+  "n": 32,
+  "arms": {
+   "baseline": {
+    "verdict_accuracy": "20/32 (63%)",
+    "hard_no_caught": "5/7",
+    "paid_on_hard_no": 2,
+    "budget_read_correctly": "19/32",
+    "quotes_not_in_post": "2/33 (6%)",
+    "json_parse_fail": 0
+   },
+   "rules_only": {
+    "verdict_accuracy": "29/32 (91%)",
+    "hard_no_caught": "6/7",
+    "paid_on_hard_no": 1,
+    "budget_read_correctly": "31/32"
+   },
+   "model_unverified": {
+    "verdict_accuracy": "22/32 (69%)",
+    "hard_no_caught": "4/7",
+    "paid_on_hard_no": 0,
+    "budget_read_correctly": "27/32"
+   },
+   "leadtoll": {
+    "verdict_accuracy": "28/32 (88%)",
+    "hard_no_caught": "6/7",
+    "paid_on_hard_no": 1,
+    "budget_read_correctly": "31/32"
+   }
+  },
+  "reader": {
+   "claims": 80,
+   "dropped_by_verifier": "7/80 (9%)",
+   "dropped_why": {
+    "no amount that code can read": 5,
+    "quote is real but does not say that": 2
+   },
+   "json_parse_fail": 5,
+   "median_extract_ms": 7321
+  }
+ },
+ "rows": [
+  {
+   "id": "syn-01",
+   "gold": "PAY",
+   "baseline": "PAY",
+   "rules_only": "PAY",
+   "leadtoll": "PAY",
+   "dropped": [],
+   "flags": [
+    "rush(model)"
+   ],
+   "budget": "2000-2000 USD"
+  },
+  {
+   "id": "syn-02",
+   "gold": "SKIP",
+   "baseline": "PAY",
+   "rules_only": "PAY",
+   "leadtoll": "SKIP",
+   "dropped": [],
+   "flags": [
+    "rush(model)"
+   ],
+   "budget": "15-20 USD"
+  },
+  {
+   "id": "syn-03",
+   "gold": "SKIP",
+   "baseline": "SKIP",
+   "rules_only": "PAY",
+   "leadtoll": "PAY",
+   "dropped": [],
+   "flags": [],
+   "budget": "3000-4000 USD"
+  },
+  {
+   "id": "syn-04",
+   "gold": "PAY",
+   "baseline": "PAY",
+   "rules_only": "PAY",
+   "leadtoll": "PAY",
+   "dropped": [],
+   "flags": [],
+   "budget": "2500-3000 USD"
+  },
+  {
+   "id": "syn-05",
+   "gold": "SKIP",
+   "baseline": "SKIP",
+   "rules_only": "SKIP",
+   "leadtoll": "SKIP",
+   "dropped": [],
+   "flags": [
+    "tos_grey(model)"
+   ],
+   "budget": "1500-1500 USD"
+  },
+  {
+   "id": "syn-06",
+   "gold": "SKIP",
+   "baseline": "PAY",
+   "rules_only": "SKIP",
+   "leadtoll": "SKIP",
+   "dropped": [],
+   "flags": [
+    "pay_on_success(rule)"
+   ],
+   "budget": null
+  },
+  {
+   "id": "syn-07",
+   "gold": "SKIP",
+   "baseline": "PAY",
+   "rules_only": "SKIP",
+   "leadtoll": "SKIP",
+   "dropped": [],
+   "flags": [
+    "unpaid_work(rule)"
+   ],
+   "budget": "2800-2800 USD"
+  },
+  {
+   "id": "syn-08",
+   "gold": "PAY",
+   "baseline": "PAY",
+   "rules_only": "PAY",
+   "leadtoll": "PAY",
+   "dropped": [],
+   "flags": [
+    "rush(model)"
+   ],
+   "budget": "1800-1800 USD"
+  },
+  {
+   "id": "syn-09",
+   "gold": "PAY",
+   "baseline": "PAY",
+   "rules_only": "PAY",
+   "leadtoll": "PAY",
+   "dropped": [],
+   "flags": [],
+   "budget": "4000-4000 USD"
+  },
+  {
+   "id": "syn-10",
+   "gold": "PAY",
+   "baseline": "PAY",
+   "rules_only": "PAY",
+   "leadtoll": "PAY",
+   "dropped": [],
+   "flags": [],
+   "budget": "1200-1200 USD"
+  },
+  {
+   "id": "syn-11",
+   "gold": "SKIP",
+   "baseline": "SKIP",
+   "rules_only": "SKIP",
+   "leadtoll": "SKIP",
+   "dropped": [],
+   "flags": [
+    "rush(model)"
+   ],
+   "budget": "2500-2500 USD"
+  },
+  {
+   "id": "syn-12",
+   "gold": "CLOSE",
+   "baseline": "PAY",
+   "rules_only": "CLOSE",
+   "leadtoll": "CLOSE",
+   "dropped": [],
+   "flags": [
+    "rush(model)"
+   ],
+   "budget": "500-5000 USD"
+  },
+  {
+   "id": "syn-13",
+   "gold": "CLOSE",
+   "baseline": "SKIP",
+   "rules_only": "CLOSE",
+   "leadtoll": "CLOSE",
+   "dropped": [],
+   "flags": [
+    "rush(model)"
+   ],
+   "budget": "700-700 USD"
+  },
+  {
+   "id": "syn-14",
+   "gold": "CLOSE",
+   "baseline": "PAY",
+   "rules_only": "CLOSE",
+   "leadtoll": "CLOSE",
+   "dropped": [],
+   "flags": [
+    "unlimited_revisions(model)",
+    "clone_big_app(rule)"
+   ],
+   "budget": "8000-8000 USD"
+  },
+  {
+   "id": "syn-15",
+   "gold": "CLOSE",
+   "baseline": "SKIP",
+   "rules_only": "CLOSE",
+   "leadtoll": "CLOSE",
+   "dropped": [
+    "budget::Budget we can discuss."
+   ],
+   "flags": [
+    "off_platform(model)"
+   ],
+   "budget": null
+  },
+  {
+   "id": "syn-16",
+   "gold": "CLOSE",
+   "baseline": "PAY",
+   "rules_only": "CLOSE",
+   "leadtoll": "CLOSE",
+   "dropped": [
+    "budget::reply with your hourly rate"
+   ],
+   "flags": [
+    "rush(model)"
+   ],
+   "budget": null
+  },
+  {
+   "id": "syn-17",
+   "gold": "PAY",
+   "baseline": "PAY",
+   "rules_only": "PAY",
+   "leadtoll": "PAY",
+   "dropped": [],
+   "flags": [
+    "rush(model)"
+   ],
+   "budget": "30000-50000 TWD"
+  },
+  {
+   "id": "syn-18",
+   "gold": "PAY",
+   "baseline": "PAY",
+   "rules_only": "PAY",
+   "leadtoll": "SKIP",
+   "dropped": [],
+   "flags": [
+    "rush(model)"
+   ],
+   "budget": "20000-20000 TWD"
+  },
+  {
+   "id": "syn-19",
+   "gold": "SKIP",
+   "baseline": "SKIP",
+   "rules_only": "SKIP",
+   "leadtoll": "SKIP",
+   "dropped": [],
+   "flags": [
+    "onsite(model)"
+   ],
+   "budget": "60000-80000 TWD"
+  },
+  {
+   "id": "syn-20",
+   "gold": "SKIP",
+   "baseline": "PAY",
+   "rules_only": "SKIP",
+   "leadtoll": "SKIP",
+   "dropped": [],
+   "flags": [
+    "rush(model)"
+   ],
+   "budget": "3000-3000 TWD"
+  },
+  {
+   "id": "syn-21",
+   "gold": "SKIP",
+   "baseline": "PAY",
+   "rules_only": "SKIP",
+   "leadtoll": "SKIP",
+   "dropped": [
+    "component:erp_suite:我們公司已經在用 Ragic 管理訂單跟庫存"
+   ],
+   "flags": [],
+   "budget": "40000-40000 TWD"
+  },
+  {
+   "id": "syn-22",
+   "gold": "CLOSE",
+   "baseline": "PAY",
+   "rules_only": "CLOSE",
+   "leadtoll": "CLOSE",
+   "dropped": [
+    "budget::預算可以談",
+    "component:shopify_theme:想做一個會員制的線上課程網站"
+   ],
+   "flags": [],
+   "budget": null
+  },
+  {
+   "id": "hist-01",
+   "gold": "PAY",
+   "baseline": "PAY",
+   "rules_only": "PAY",
+   "leadtoll": "PAY",
+   "dropped": [],
+   "flags": [
+    "rush(model)"
+   ],
+   "budget": "100000-150000 TWD"
+  },
+  {
+   "id": "hist-02",
+   "gold": "PAY",
+   "baseline": "PAY",
+   "rules_only": "PAY",
+   "leadtoll": "CLOSE",
+   "dropped": [],
+   "flags": [
+    "vague_scope(model)"
+   ],
+   "budget": "30000-50000 TWD"
+  },
+  {
+   "id": "hist-03",
+   "gold": "PAY",
+   "baseline": "PAY",
+   "rules_only": "PAY",
+   "leadtoll": "PAY",
+   "dropped": [],
+   "flags": [],
+   "budget": "null-30000 TWD"
+  },
+  {
+   "id": "hist-04",
+   "gold": "PAY",
+   "baseline": "PAY",
+   "rules_only": "PAY",
+   "leadtoll": "PAY",
+   "dropped": [],
+   "flags": [],
+   "budget": "50000-100000 TWD"
+  },
+  {
+   "id": "hist-05",
+   "gold": "SKIP",
+   "baseline": "SKIP",
+   "rules_only": "SKIP",
+   "leadtoll": "SKIP",
+   "dropped": [
+    "budget::預算面議。"
+   ],
+   "flags": [
+    "onsite(model)"
+   ],
+   "budget": null
+  },
+  {
+   "id": "hist-06",
+   "gold": "SKIP",
+   "baseline": "SKIP",
+   "rules_only": "SKIP",
+   "leadtoll": "SKIP",
+   "dropped": [],
+   "flags": [],
+   "budget": "20000-20000 TWD"
+  },
+  {
+   "id": "hist-07",
+   "gold": "SKIP",
+   "baseline": "SKIP",
+   "rules_only": "SKIP",
+   "leadtoll": "SKIP",
+   "dropped": [
+    "budget::預算還沒想好，看報價。"
+   ],
+   "flags": [],
+   "budget": null
+  },
+  {
+   "id": "hist-08",
+   "gold": "SKIP",
+   "baseline": "SKIP",
+   "rules_only": "SKIP",
+   "leadtoll": "SKIP",
+   "dropped": [],
+   "flags": [],
+   "budget": null
+  },
+  {
+   "id": "hist-09",
+   "gold": "SKIP",
+   "baseline": "SKIP",
+   "rules_only": "SKIP",
+   "leadtoll": "SKIP",
+   "dropped": [],
+   "flags": [
+    "tos_grey(model)"
+   ],
+   "budget": null
+  },
+  {
+   "id": "hist-10",
+   "gold": "SKIP",
+   "baseline": "PAY",
+   "rules_only": "PAY",
+   "leadtoll": "PAY",
+   "dropped": [],
+   "flags": [
+    "rush(model)"
+   ],
+   "budget": "500000-1000000 TWD"
+  }
+ ]
+}

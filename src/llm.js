@@ -29,13 +29,14 @@ export async function loadModel(onProgress, { worker = true } = {}) {
   return engine;
 }
 
-export async function ask(prompt, { maxTokens = 700 } = {}) {
+export async function ask(prompt, { maxTokens = 700, schema = null, grammar = null } = {}) {
   if (!engine) throw new Error('Model not loaded');
   const t0 = performance.now();
   const r = await engine.chat.completions.create({
     messages: [{ role: 'user', content: prompt }],
     temperature: 0,
     max_tokens: maxTokens,
+    ...(grammar ? { response_format: { type: 'grammar', grammar } } : schema ? { response_format: { type: 'json_object', schema: JSON.stringify(schema) } } : {}),
   });
   await engine.resetChat?.();
   return { text: r.choices[0].message.content, ms: Math.round(performance.now() - t0), usage: r.usage };

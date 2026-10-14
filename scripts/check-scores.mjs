@@ -7,12 +7,13 @@ const dir = 'eval/runs';
 const sets = {
   dev: ['eval/dev_synthetic.jsonl', 'eval/dev_history.jsonl'],
   holdout: ['eval/holdout.jsonl'],
+  holdout2: ['eval/holdout2.jsonl'],
 };
 let bad = 0;
 for (const f of fs.readdirSync(dir).filter((x) => x.endsWith('.score.json'))) {
   const run = `${dir}/${f.replace('.score.json', '.json')}`;
   const before = JSON.parse(fs.readFileSync(`${dir}/${f}`, 'utf8')).summary;
-  const data = f.includes('holdout') ? sets.holdout : sets.dev;
+  const data = sets[f.replace('.score.json', '')] || sets.dev;
   execFileSync('node', ['scripts/score.mjs', run, ...data], { stdio: 'ignore' });
   const after = JSON.parse(fs.readFileSync(`${dir}/${f}`, 'utf8')).summary;
   const same = JSON.stringify(before.arms) === JSON.stringify(after.arms) && JSON.stringify(before.reader) === JSON.stringify(after.reader);

@@ -70,3 +70,23 @@ describe('decision', () => {
   });
   it('parses fenced json', () => expect(parseJSON('```json\n{"a":1}\n```')).toEqual({ a: 1 }));
 });
+
+describe('negation', () => {
+  it('no need to come to the shop is not onsite', () => {
+    expect(ruleFlags('全程線上討論就可以，不用到店裡。').length).toBe(0);
+    expect(ruleFlags('No need to come to our office, everything is remote.').length).toBe(0);
+  });
+  it('drops a model onsite flag whose quote says the opposite', () => {
+    const post = '全程線上討論就可以，不用到店裡。預算 4 萬。';
+    const r = triage({ budget: null, components: [], flags: [{ type: 'onsite', quote: '不用到店裡' }] }, post, { amount: 200, currency: 'TWD' }, P);
+    expect(r.facts.flags.length).toBe(0);
+    expect(r.dropped[0].why).toBe('quote says the opposite');
+  });
+});
+
+describe('sentences', () => {
+  it('does not split decimals', async () => {
+    const { sentences } = await import('../src/core/pipeline.js');
+    expect(sentences('我們預算 2.5 萬，先做一間。時間一週。')).toEqual(['我們預算 2.5 萬,先做一間。', '時間一週。']);
+  });
+});

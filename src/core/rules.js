@@ -19,8 +19,11 @@ const NO_GO = [
 ];
 
 export function sentenceList(post) {
-  return String(post ?? '').normalize('NFKC').split(/(?<=[.!?。！？\n])\s*/).map((s) => s.trim()).filter(Boolean);
+  return String(post ?? '').normalize('NFKC').split(/(?<=[.!?。！？\n])(?!\d)\s*/).map((s) => s.trim()).filter(Boolean);
 }
+
+// "No need to come to the shop" is the opposite of an on-site requirement.
+export const NEGATED_ONSITE = /(不用|不需要?|不必|無須|免)[^，。,.]{0,6}(到|來|跑|進|去)|no need to (come|visit|be)|(don't|do not|won't|will not) (need|have) to (come|visit|be)|never (need|have) to (come|visit)|not required to (come|visit|be)/i;
 
 /** Returns [{type, quote, source:'rule'}]. Looks at each sentence and at each pair of neighbours. */
 export function ruleFlags(post) {
@@ -28,7 +31,7 @@ export function ruleFlags(post) {
   const windows = [...ss, ...ss.slice(0, -1).map((s, i) => s + ' ' + ss[i + 1])];
   const out = [];
   for (const [type, re] of R) {
-    const s = windows.find((x) => re.test(x));
+    const s = windows.find((x) => re.test(x) && !(type === 'onsite' && NEGATED_ONSITE.test(x)));
     if (s) out.push({ type, quote: s, source: 'rule' });
   }
   return out;

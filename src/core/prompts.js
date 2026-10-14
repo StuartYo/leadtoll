@@ -69,3 +69,53 @@ Job post:
 ${post}
 """`;
 }
+
+/** JSON schema for the reader. WebLLM turns it into a grammar, so the model cannot drift off it. */
+export const EXTRACT_SCHEMA = {
+  type: 'object',
+  properties: {
+    budget: {
+      anyOf: [
+        { type: 'null' },
+        { type: 'object', properties: { quote: { type: 'string' }, per: { type: 'string', enum: ['project', 'hour'] } }, required: ['quote', 'per'] },
+      ],
+    },
+    components: {
+      type: 'array',
+      items: { type: 'object', properties: { type: { type: 'string', enum: Object.keys(COMPONENTS) }, count: { type: 'integer' }, quote: { type: 'string' } }, required: ['type', 'count', 'quote'] },
+    },
+    flags: {
+      type: 'array',
+      items: { type: 'object', properties: { type: { type: 'string', enum: Object.keys(FLAGS) }, quote: { type: 'string' } }, required: ['type', 'quote'] },
+    },
+  },
+  required: ['budget', 'components', 'flags'],
+};
+
+export const BASELINE_SCHEMA = {
+  type: 'object',
+  properties: {
+    verdict: { type: 'string', enum: ['PAY', 'SKIP', 'CLOSE'] },
+    budget_min: { anyOf: [{ type: 'number' }, { type: 'null' }] },
+    budget_max: { anyOf: [{ type: 'number' }, { type: 'null' }] },
+    currency: { anyOf: [{ type: 'string', enum: ['USD', 'TWD'] }, { type: 'null' }] },
+    reasons: { type: 'array', items: { type: 'object', properties: { reason: { type: 'string' }, quote: { type: 'string' } }, required: ['reason', 'quote'] } },
+  },
+  required: ['verdict', 'budget_min', 'budget_max', 'currency', 'reasons'],
+};
+
+// A hand-written grammar for the reader. The JSON-schema route lets a 2B model fill the
+// output with blank lines until it runs out of tokens (5 of 32 dev posts), so whitespace is fixed here.
+const alt = (xs) => xs.map((x) => `"\\"${x}\\""`).join(' | ');
+export const EXTRACT_GRAMMAR = String.raw`root ::= "{\n  \"budget\": " budget ",\n  \"components\": " comps ",\n  \"flags\": " flags "\n}"
+budget ::= "null" | "{\"quote\": " str ", \"per\": " per "}"
+per ::= "\"project\"" | "\"hour\""
+comps ::= "[]" | "[\n    " comp (",\n    " comp)* "\n  ]"
+comp ::= "{\"type\": " ctype ", \"count\": " int ", \"quote\": " str "}"
+flags ::= "[]" | "[\n    " flag (",\n    " flag)* "\n  ]"
+flag ::= "{\"type\": " ftype ", \"quote\": " str "}"
+int ::= [1-9] [0-9]?
+str ::= "\"" chr+ "\""
+chr ::= [^"\\\n] | "\\" ["\\/nt]
+ctype ::= ` + alt(Object.keys(COMPONENTS)) + String.raw`
+ftype ::= ` + alt(Object.keys(FLAGS)) + '\n';
